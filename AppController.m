@@ -1,5 +1,8 @@
 #import "AppController.h"
 
+#define INITIAL_DELAY 60
+#define DELAY_MAX 1800
+#define DELAY_MULTIPLIER 1.2
 
 @implementation AppController
 
@@ -140,14 +143,14 @@
 
 - (void)resetDelay
 {
-	delay=13;
+	delay=INITIAL_DELAY;
 }
 
 - (void)increaseDelay
 {
-	delay*=1.414;
-	if (delay>600) {
-		delay=600;
+	delay*=DELAY_MULTIPLIER;
+	if (delay>DELAY_MAX) {
+		delay=DELAY_MAX;
 	}
 }
 
