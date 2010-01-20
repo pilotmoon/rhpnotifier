@@ -9,8 +9,11 @@
 	// the status text to display
 	NSString *statusLine;
 	
-	// the text to display on the "go to site" button
+	// the text to display on the "go to site" link
 	NSString *resultLine;
+	
+	// the login status text
+	NSString *loginLine;
 	
 	// status bar item
 	NSStatusItem *statusItem;
@@ -32,6 +35,7 @@
 @property (readonly) BOOL pulldown;
 @property (copy) NSString *statusLine;
 @property (copy) NSString *resultLine;
+@property (copy) NSString *loginLine;
 
 // the available UI actions
 - (IBAction)checkNow:(id)sender;

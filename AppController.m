@@ -6,6 +6,7 @@
 @synthesize ready;
 @synthesize statusLine;
 @synthesize resultLine;
+@synthesize loginLine;
 
 - (BOOL)pulldown
 {
@@ -72,20 +73,25 @@
 	switch(rhpChecker.status)
 	{
 		case RHPCHECKER_OK:
-			self.statusLine=[NSString stringWithFormat:@"Logged in as %@", rhpChecker.playerName];
+			self.statusLine=@"Status: OK";
+			self.loginLine=[NSString stringWithFormat:@"Logged in as %@", rhpChecker.playerName];
 			break;
 		case RHPCHECKER_NEVER_CHECKED:
-			self.statusLine=@"Application starting...";
+			self.statusLine=@"Status: Application starting...";
+			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_COOKIE_PROBLEM:
-			self.statusLine=@"No login cookie";
+			self.statusLine=@"Status: Safari login required";
+			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_CONNECTION_PROBLEM:
-			self.statusLine=@"Could not connect";
+			self.statusLine=@"Status: Could not connect";
+			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_RESPONSE_PROBLEM:
 		default:
-			self.statusLine=@"Error: Check attempt failed";
+			self.statusLine=@"Status: Site response error";
+			self.loginLine=@"Not logged in";
 			break;
 	}
 }
@@ -115,7 +121,7 @@
 - (void)willRun
 {
 	self.ready=NO;
-	self.statusLine=@"Checking...";
+	self.statusLine=@"Status: Checking...";
 }
 
 - (void)didRun

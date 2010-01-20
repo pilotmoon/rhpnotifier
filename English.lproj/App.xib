@@ -77,6 +77,14 @@
 						<reference key="NSOnImage" ref="508418370"/>
 						<reference key="NSMixedImage" ref="721119956"/>
 					</object>
+					<object class="NSMenuItem" id="817557815">
+						<reference key="NSMenu" ref="361934612"/>
+						<string key="NSTitle">LoginStatus</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="508418370"/>
+						<reference key="NSMixedImage" ref="721119956"/>
+					</object>
 					<object class="NSMenuItem" id="205048254">
 						<reference key="NSMenu" ref="361934612"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -192,6 +200,38 @@
 					</object>
 					<int key="connectionID">33</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: pulldown</string>
+						<reference key="source" ref="817557815"/>
+						<reference key="destination" ref="390651666"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="817557815"/>
+							<reference key="NSDestination" ref="390651666"/>
+							<string key="NSLabel">enabled: pulldown</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">pulldown</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">38</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">title: loginLine</string>
+						<reference key="source" ref="817557815"/>
+						<reference key="destination" ref="390651666"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="817557815"/>
+							<reference key="NSDestination" ref="390651666"/>
+							<string key="NSLabel">title: loginLine</string>
+							<string key="NSBinding">title</string>
+							<string key="NSKeyPath">loginLine</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">40</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -236,6 +276,7 @@
 							<reference ref="135718148"/>
 							<reference ref="360773472"/>
 							<reference ref="763135983"/>
+							<reference ref="817557815"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -274,6 +315,11 @@
 						<reference key="object" ref="135718148"/>
 						<reference key="parent" ref="361934612"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">35</int>
+						<reference key="object" ref="817557815"/>
+						<reference key="parent" ref="361934612"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -286,6 +332,7 @@
 					<string>2.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
 					<string>34.IBPluginDependency</string>
+					<string>35.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
 					<string>9.IBPluginDependency</string>
@@ -294,7 +341,8 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{52, 642}, {197, 103}}</string>
+					<string>{{77, 751}, {197, 123}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -319,7 +367,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">34</int>
+			<int key="maxID">40</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -731,7 +779,7 @@
 			<integer value="3000" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<string key="IBDocument.LastKnownRelativeProjectPath">RHP Checker.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../rhpnotifier.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>
