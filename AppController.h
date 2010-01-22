@@ -2,7 +2,7 @@
 #import "RhpChecker.h"
 #import "BackgroundTaskRunner.h"
 
-@interface AppController : NSObject <NSMenuDelegate> {
+@interface AppController : NSObject {
 	// YES if currently idle, NO if checking
 	BOOL ready;
 	
