@@ -30,6 +30,9 @@
 	
 	// status menu object
 	IBOutlet NSMenu *statusMenu;
+	IBOutlet NSMenuItem *actionItem;
+	IBOutlet NSMenuItem *firstStatusItem;
+	IBOutlet NSMenuItem *secondStatusItem;
 }
 
 @property BOOL ready;
