@@ -1,8 +1,9 @@
 #import "AppController.h"
 
-#define INITIAL_DELAY 60
-#define DELAY_MAX 1800
-#define DELAY_MULTIPLIER 1.2
+#define INTERVAL_RECONNECT 10
+#define INTERVAL_MIN 60
+#define INTERVAL_MAX 1800
+#define INTERVAL_MULTIPLIER 1.2
 
 @implementation AppController
 
@@ -20,15 +21,14 @@
 {
 	[super init];
 	
+	lct = [NSDate distantPast];
+	interval=0;
+	
 	rhpChecker = [[RhpChecker alloc] init];
 	
-	taskRunner = [[BackgroundTaskRunner alloc] init];
-	[taskRunner setDelegate:self];
-
 	self.ready=NO;
 	[self updateResult];
 	[self updateStatus];
-	[self resetDelay];
 	
 	return self;
 }
@@ -41,7 +41,9 @@
 	[statusItem setHighlightMode:YES];	
 	[statusItem setMenu:statusMenu];
 	[statusMenu setDelegate:self];	
-	[taskRunner runNow];
+	
+	// kick off timer system
+	[self timerRoutine:nil];
 }
 
 - (void)updateResult
@@ -77,7 +79,8 @@
 	{
 		case RHPCHECKER_OK:
 			self.statusLine=@"Status: OK";
-			self.loginLine=[NSString stringWithFormat:@"Logged in as %@", rhpChecker.playerName];
+			self.loginLine=[NSString stringWithFormat:@"Logged in as %@",
+							rhpChecker.playerName];
 			break;
 		case RHPCHECKER_NEVER_CHECKED:
 			self.statusLine=@"Status: Application starting...";
@@ -99,31 +102,45 @@
 	}
 }
 
-- (void)scheduleTask
+- (void)timerRoutine:(NSTimer *)unused
 {
-	if(rhpChecker.status!=RHPCHECKER_OK) {
-		[self resetDelay];
-	}
-	NSLog(@"Scheduling next check in %f seconds", delay);
-	[taskRunner performSelector:@selector(runNow) withObject:nil afterDelay:delay];
-	[self increaseDelay];
-}
-
-- (void)cancelTask
-{
-	NSLog(@"Cancelling scheduled check");
-	[NSObject cancelPreviousPerformRequestsWithTarget:taskRunner];
-	[self resetDelay];
-}
-
-- (void)task
-{
+	self.ready=NO;
+	
+	[self willRun];
 	[rhpChecker check];
+	[self didRun];
+	
+	if (rhpChecker.status == RHPCHECKER_OK) {
+		if (interval < INTERVAL_MIN) {
+			interval = INTERVAL_MIN;
+		}
+		else {
+			interval*=INTERVAL_MULTIPLIER;
+			if (interval > INTERVAL_MAX) {
+				interval = INTERVAL_MAX;
+			}		
+		}
+	}
+	else {
+		interval=INTERVAL_RECONNECT;
+	}
+	
+	// schedule next check
+	lct = [NSDate date];
+	timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self 
+										   selector:@selector(timerRoutine:)
+								   userInfo:nil
+									repeats:NO];
+	
+	NSLog(@"last checked at %@", lct);
+	NSLog(@"new interval is %f", interval);
+	NSLog(@"timer scheduled for %@", [timer fireDate]);
+	
+	self.ready=YES;
 }
 
 - (void)willRun
 {
-	self.ready=NO;
 	self.statusLine=@"Status: Checking...";
 }
 
@@ -131,26 +148,17 @@
 {
 	[self updateResult];
 	[self updateStatus];
-	[self scheduleTask];
-	self.ready=YES;
 }
 
-- (IBAction)checkNow:(id)sender
+- (void)checkSoon
 {
-	[self cancelTask];
-	[taskRunner runNow];
-}
-
-- (void)resetDelay
-{
-	delay=INITIAL_DELAY;
-}
-
-- (void)increaseDelay
-{
-	delay*=DELAY_MULTIPLIER;
-	if (delay>DELAY_MAX) {
-		delay=DELAY_MAX;
+	interval = [rhpChecker status] == RHPCHECKER_OK ? INTERVAL_MIN : 0;
+	
+	// if not in course of a check, bring the scheduled check forwards
+	if (ready) {
+		[timer setFireDate:[[NSDate alloc] initWithTimeInterval:interval 
+													  sinceDate:lct]];
+		NSLog(@"fire date changed to %@", [timer fireDate]);
 	}
 }
 
@@ -161,7 +169,7 @@
 
 - (void)menuWillOpen:(NSMenu *)menu
 {
-	[self checkNow:nil];
+	[self checkSoon];
 }
 
 @end

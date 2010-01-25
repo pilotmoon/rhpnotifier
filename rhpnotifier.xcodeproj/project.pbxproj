@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		01A5C2F8110631B400651AB9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F1110631B400651AB9 /* AppController.m */; };
-		01A5C2F9110631B400651AB9 /* BackgroundTaskRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F3110631B400651AB9 /* BackgroundTaskRunner.m */; };
 		01A5C2FA110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F5110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m */; };
 		01A5C2FB110631B400651AB9 /* RhpChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F7110631B400651AB9 /* RhpChecker.m */; };
 		01A5C30B1106328200651AB9 /* App.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A5C3091106328200651AB9 /* App.xib */; };
@@ -20,8 +19,6 @@
 /* Begin PBXFileReference section */
 		01A5C2F0110631B400651AB9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		01A5C2F1110631B400651AB9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		01A5C2F2110631B400651AB9 /* BackgroundTaskRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTaskRunner.h; sourceTree = "<group>"; };
-		01A5C2F3110631B400651AB9 /* BackgroundTaskRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTaskRunner.m; sourceTree = "<group>"; };
 		01A5C2F4110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPCookieStorage+FilterNames.h"; sourceTree = "<group>"; };
 		01A5C2F5110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPCookieStorage+FilterNames.m"; sourceTree = "<group>"; };
 		01A5C2F6110631B400651AB9 /* RhpChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RhpChecker.h; sourceTree = "<group>"; };
@@ -55,8 +52,6 @@
 			children = (
 				01A5C2F0110631B400651AB9 /* AppController.h */,
 				01A5C2F1110631B400651AB9 /* AppController.m */,
-				01A5C2F2110631B400651AB9 /* BackgroundTaskRunner.h */,
-				01A5C2F3110631B400651AB9 /* BackgroundTaskRunner.m */,
 				01A5C2F4110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.h */,
 				01A5C2F5110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m */,
 				01A5C2F6110631B400651AB9 /* RhpChecker.h */,
@@ -188,7 +183,6 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				01A5C2F8110631B400651AB9 /* AppController.m in Sources */,
-				01A5C2F9110631B400651AB9 /* BackgroundTaskRunner.m in Sources */,
 				01A5C2FA110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m in Sources */,
 				01A5C2FB110631B400651AB9 /* RhpChecker.m in Sources */,
 			);

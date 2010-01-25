@@ -1,6 +1,5 @@
 #import <Cocoa/Cocoa.h>
 #import "RhpChecker.h"
-#import "BackgroundTaskRunner.h"
 
 @interface AppController : NSObject {
 	// YES if currently idle, NO if checking
@@ -20,12 +19,14 @@
 	
 	// the RHP checker object
 	RhpChecker *rhpChecker;
-	
-	// helper object for running in background
-	BackgroundTaskRunner *taskRunner;
 
 	// how long to wait between checks
-	NSTimeInterval delay;
+	NSTimeInterval interval;
+	
+	// last check time (time finished checking)
+	NSDate *lct;
+	
+	NSTimer *timer;
 	
 	// status menu object
 	IBOutlet NSMenu *statusMenu;
@@ -38,25 +39,15 @@
 @property (copy) NSString *loginLine;
 
 // the available UI actions
-- (IBAction)checkNow:(id)sender;
 - (IBAction)goToSite:(id)sender;
 
 // UI update methods
 - (void)updateResult;
 - (void)updateStatus;
 
-// task scheduling methods
-- (void)scheduleTask;
-- (void)cancelTask;
-
-// task runner delegate methods
-- (void)task;
+- (void)timerRoutine:(NSTimer *)timer;
 - (void)willRun;
 - (void)didRun;
-
-// methods for changing the delay
-- (void)resetDelay;
-- (void)increaseDelay;
 
 
 @end
