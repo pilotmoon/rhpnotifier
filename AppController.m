@@ -1,4 +1,5 @@
 #import "AppController.h"
+#include "debug.h"
 
 #define INTERVAL_RECONNECT 10
 #define INTERVAL_MIN 60

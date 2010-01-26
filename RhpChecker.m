@@ -1,5 +1,6 @@
 #import "RhpChecker.h"
 #import "NSHTTPCookieStorage+FilterNames.h"
+#include "debug.h"
 
 @implementation RhpChecker
 
@@ -128,10 +129,12 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	do {
+	
+#ifdef DEBUG
 		// load document data into a string
 		NSString * s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 		NSLog(@"Document data is: %@", s);
-		
+#endif		
 		// process the xml
 		NSError *error;
 		NSXMLDocument *xml=[[NSXMLDocument alloc] initWithData:data options:0 error:&error];
