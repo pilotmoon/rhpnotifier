@@ -32,7 +32,7 @@
 	NSString *playerName;
 	
 	// URL request for query service (to be cached)
-	NSURLRequest *urlRequest;
+	NSURLRequest *cachedRequest;
 	
 	// the query service url
 	NSURL *siteQueryUrl;
@@ -45,6 +45,9 @@
 	
 	// delegate for completion callback
 	NSObject <RhpCheckerDelegate> *delegate;
+	
+	// the received data
+	NSMutableData *data;
 }
 
 @property NSObject <RhpCheckerDelegate> *delegate;
@@ -53,10 +56,11 @@
 @property (readonly) NSString *playerName;
 @property (readonly) NSURL *siteVisitUrl;
 
-/* Attempt to get the number of games waiting from the site. Check status
- to see if it was successful. */
+/* Attempt to get the number of games waiting from the site.
+ Always calls the "will check" and "did check" delegate methods.
+ Check status to see if it was successful.
+ Not thread safe: only one check allowed at a time. */
 - (void)check;
-
 
 @end
 

@@ -28,17 +28,21 @@
 
 
 /* Clear the url request so it will be created again on the next check */
-- (void)clearRequest
+- (void)clearCachedRequest
 {
-	urlRequest=nil;
+	cachedRequest=nil;
 }
 
-/* Return the cached session cookies if we have them. Otherwise, try load them into the cache
- and return them, or nil if they are not available. */
+- (void)clearData
+{
+	data = [NSMutableData dataWithLength:0];
+}
+
+/* Return the cached request if we have one. Otherwise, create one. */
 - (NSURLRequest *)cachedRequest
 {
 	// get the login cookies
-	if(urlRequest==nil) {
+	if(cachedRequest==nil) {
 		NSLog(@"Generating URL request");
 		
 		// get cookies
@@ -53,52 +57,83 @@
 			// set up URL request
 			NSMutableURLRequest *req=[NSMutableURLRequest requestWithURL:siteQueryUrl];
 			[req setAllHTTPHeaderFields:[NSHTTPCookie requestHeaderFieldsWithCookies:cookies]];
-			urlRequest=req;
+			cachedRequest=req;
 		}
 	}
 	
-	return urlRequest;
+	return cachedRequest;
 }
 
 - (void)check
 {
 	status=RHPCHECKER_DEFAULT;
-	
-	[delegate performSelectorOnMainThread:@selector(rhpCheckerWillCheck)
-							   withObject:nil waitUntilDone:NO];
+	[delegate rhpCheckerWillCheck];
 
+	NSURLRequest *req=[self cachedRequest];
+	if(req==nil) {
+		status=RHPCHECKER_COOKIE_PROBLEM;
+	}
+	else {
+		[self clearData];
+		
+		NSURLConnection *conn=[[NSURLConnection alloc] initWithRequest:req
+															  delegate:self
+													  startImmediately:NO];
+		/* must schedule in "common modes" so it will work regardless
+		 of whether the a menu is open or not */
+		[conn scheduleInRunLoop:[NSRunLoop currentRunLoop]
+						forMode:NSRunLoopCommonModes];
+		[conn start];
+	}
+}
+
+
+- (void)washup
+{
+	// if we failed then clear the cached connection, assume it is bad
+	if(status!=RHPCHECKER_OK) {
+		[self clearCachedRequest];
+	}
+	[delegate rhpCheckerDidCheck];
+}
+
+
+// connection failed
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+	NSLog(@"NSURLConnection sendSynchronousRequest failed. Error: %@", error);
+	status=RHPCHECKER_CONNECTION_PROBLEM;
+	[self washup];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
+{
+	NSLog(@"received url response");
+
+	// if it's not 200 just dump everything
+	if([response statusCode]!=200) {
+		NSLog(@"Request status code is %d.", [response statusCode]);
+		status=RHPCHECKER_RESPONSE_PROBLEM;
+		[connection cancel];
+		[self washup];
+	}
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)theData
+{
+	NSLog(@"received data");
+	[data appendData:theData];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
 	do {
-		// get the request
-		NSURLRequest *req=[self cachedRequest];
-		if(req==nil) {
-			status=RHPCHECKER_COOKIE_PROBLEM;
-			break;
-		}
-	
-		// run URL request
-		NSHTTPURLResponse *response=nil;
-		NSError *error=nil;
-		NSData *data=[NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
-		
-		// check result
-		if (!data) {
-			NSLog(@"NSURLConnection sendSynchronousRequest failed. Error: %@", error);
-			status=RHPCHECKER_CONNECTION_PROBLEM;
-			break;
-		}
-		
-		// check http status code
-		if([response statusCode]!=200) {
-			NSLog(@"Request status code is %d.", [response statusCode]);
-			status=RHPCHECKER_RESPONSE_PROBLEM;
-			break;
-		}
-
 		// load document data into a string
 		NSString * s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 		NSLog(@"Document data is: %@", s);
 		
 		// process the xml
+		NSError *error;
 		NSXMLDocument *xml=[[NSXMLDocument alloc] initWithData:data options:0 error:&error];
 		if(xml==nil) {
 			NSLog(@"XML processing failed. Error: %@", error);
@@ -125,13 +160,7 @@
 
 	} while(NO);
 	
-	// if we failed then clear the request to give the best chance next time
-	if(status!=RHPCHECKER_OK) {
-		[self clearRequest];
-	}
-	
-	[delegate performSelectorOnMainThread:@selector(rhpCheckerDidCheck)
-							   withObject:nil waitUntilDone:NO];
+	[self washup];
 }
 
 
