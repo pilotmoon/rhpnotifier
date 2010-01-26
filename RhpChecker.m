@@ -12,7 +12,7 @@
 
 - (id)init
 {
-	NSLog(@"RhpChecker init called");
+	DLog(@"RhpChecker init called");
 	
 	// set default
 	gamesWaiting=0;
