@@ -15,6 +15,12 @@
 #define RHPCHECKER_RESPONSE_PROBLEM 1003	// problem with response the site gave
 #define RHPCHECKER_NEVER_CHECKED 1004		// not check attempt has yet been made
 
+// protocol for completion notifications
+@protocol RhpCheckerDelegate
+- (void)rhpCheckerWillCheck;
+- (void)rhpCheckerDidCheck;
+@end
+
 @interface RhpChecker : NSObject {
 	/* Result of most recent check. Status codes RHPCHECKER_xxx defined above. */
 	int status;
@@ -36,8 +42,12 @@
 	
 	// the session cookies required for login
 	NSSet *siteCookieNames;
+	
+	// delegate for completion callback
+	id <RhpCheckerDelegate> delegate;
 }
 
+@property id <RhpCheckerDelegate> delegate;
 @property (readonly) int status;
 @property (readonly) int gamesWaiting;
 @property (readonly) NSString *playerName;
@@ -47,4 +57,6 @@
  to see if it was successful. */
 - (void)check;
 
+
 @end
+

@@ -25,6 +25,7 @@
 	interval=0;
 	
 	rhpChecker = [[RhpChecker alloc] init];
+	[rhpChecker setDelegate:self];
 	
 	self.ready=NO;
 	[self updateResult];
@@ -104,18 +105,25 @@
 
 - (void)timerRoutine:(NSTimer *)unused
 {
-	self.ready=NO;
 	NSLog(@"--> timer routine fired");
-	
-	[self willRun];
 	[rhpChecker check];
-	[self rhpCheckComplete];
 }
 
-- (void)rhpCheckComplete
+- (void)rhpCheckerWillCheck
+{
+	self.ready=NO;
+	self.statusLine=@"Status: Checking...";
+	[statusMenu update];
+}
+
+- (void)rhpCheckerDidCheck
 {
 	NSLog(@"check complete");
-	[self didRun];
+	
+	// update ui
+	[self updateResult];
+	[self updateStatus];
+	[statusMenu update];
 	
 	if (rhpChecker.status == RHPCHECKER_OK) {
 		if (interval < INTERVAL_MIN) {
@@ -146,20 +154,6 @@
 	NSLog(@"timer scheduled for %@", [timer fireDate]);
 	
 	self.ready=YES;
-}
-
-
-- (void)willRun
-{
-	self.statusLine=@"Status: Checking...";
-	[statusMenu update];
-}
-
-- (void)didRun
-{
-	[self updateResult];
-	[self updateStatus];
-	[statusMenu update];
 }
 
 - (void)checkSoon

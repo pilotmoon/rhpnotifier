@@ -1,7 +1,7 @@
 #import <Cocoa/Cocoa.h>
 #import "RhpChecker.h"
 
-@interface AppController : NSObject {
+@interface AppController : NSObject <RhpCheckerDelegate> {
 	// YES if currently idle, NO if checking
 	BOOL ready;
 	
@@ -46,10 +46,5 @@
 - (void)updateStatus;
 
 - (void)timerRoutine:(NSTimer *)timer;
-- (void)willRun;
-- (void)didRun;
-
-// rhpchecker delegate method
-- (void)rhpCheckComplete;
 
 @end

@@ -7,6 +7,7 @@
 @synthesize playerName;
 @synthesize status;
 @synthesize siteVisitUrl;
+@synthesize delegate;
 
 - (id)init
 {
@@ -63,6 +64,8 @@
 {
 	status=RHPCHECKER_DEFAULT;
 	
+	[delegate rhpCheckerWillCheck];
+
 	do {
 		// get the request
 		NSURLRequest *req=[self cachedRequest];
@@ -70,7 +73,7 @@
 			status=RHPCHECKER_COOKIE_PROBLEM;
 			break;
 		}
-
+	
 		// run URL request
 		NSHTTPURLResponse *response=nil;
 		NSError *error=nil;
@@ -125,6 +128,8 @@
 	if(status!=RHPCHECKER_OK) {
 		[self clearRequest];
 	}
+	
+	[delegate rhpCheckerDidCheck];
 }
 
 
