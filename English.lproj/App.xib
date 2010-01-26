@@ -232,30 +232,6 @@
 					</object>
 					<int key="connectionID">40</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">actionItem</string>
-						<reference key="source" ref="390651666"/>
-						<reference key="destination" ref="360773472"/>
-					</object>
-					<int key="connectionID">41</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">firstStatusItem</string>
-						<reference key="source" ref="390651666"/>
-						<reference key="destination" ref="763135983"/>
-					</object>
-					<int key="connectionID">42</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">secondStatusItem</string>
-						<reference key="source" ref="390651666"/>
-						<reference key="destination" ref="817557815"/>
-					</object>
-					<int key="connectionID">43</int>
-				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">

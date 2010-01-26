@@ -30,9 +30,6 @@
 	
 	// status menu object
 	IBOutlet NSMenu *statusMenu;
-	IBOutlet NSMenuItem *actionItem;
-	IBOutlet NSMenuItem *firstStatusItem;
-	IBOutlet NSMenuItem *secondStatusItem;
 }
 
 @property BOOL ready;
@@ -52,5 +49,7 @@
 - (void)willRun;
 - (void)didRun;
 
+// rhpchecker delegate method
+- (void)rhpCheckComplete;
 
 @end

@@ -1,7 +1,7 @@
 #import "AppController.h"
 
 #define INTERVAL_RECONNECT 10
-#define INTERVAL_MIN 10
+#define INTERVAL_MIN 60
 #define INTERVAL_MAX 1800
 #define INTERVAL_MULTIPLIER 1.2
 
@@ -109,6 +109,12 @@
 	
 	[self willRun];
 	[rhpChecker check];
+	[self rhpCheckComplete];
+}
+
+- (void)rhpCheckComplete
+{
+	NSLog(@"check complete");
 	[self didRun];
 	
 	if (rhpChecker.status == RHPCHECKER_OK) {
@@ -130,9 +136,9 @@
 	lct = [NSDate date];
 	
 	timer = [NSTimer timerWithTimeInterval:interval target:self 
-										   selector:@selector(timerRoutine:)
-								   userInfo:nil
-									repeats:NO];
+								  selector:@selector(timerRoutine:)
+								  userInfo:nil
+								   repeats:NO];
 	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 	
 	NSLog(@"last checked at %@", lct);
@@ -142,10 +148,10 @@
 	self.ready=YES;
 }
 
+
 - (void)willRun
 {
 	self.statusLine=@"Status: Checking...";
-	[[firstStatusItem view] setNeedsDisplay:YES];
 	[statusMenu update];
 }
 
