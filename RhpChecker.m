@@ -64,7 +64,8 @@
 {
 	status=RHPCHECKER_DEFAULT;
 	
-	[delegate rhpCheckerWillCheck];
+	[delegate performSelectorOnMainThread:@selector(rhpCheckerWillCheck)
+							   withObject:nil waitUntilDone:NO];
 
 	do {
 		// get the request
@@ -129,7 +130,8 @@
 		[self clearRequest];
 	}
 	
-	[delegate rhpCheckerDidCheck];
+	[delegate performSelectorOnMainThread:@selector(rhpCheckerDidCheck)
+							   withObject:nil waitUntilDone:NO];
 }
 
 

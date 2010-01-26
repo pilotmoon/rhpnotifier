@@ -44,10 +44,10 @@
 	NSSet *siteCookieNames;
 	
 	// delegate for completion callback
-	id <RhpCheckerDelegate> delegate;
+	NSObject <RhpCheckerDelegate> *delegate;
 }
 
-@property id <RhpCheckerDelegate> delegate;
+@property NSObject <RhpCheckerDelegate> *delegate;
 @property (readonly) int status;
 @property (readonly) int gamesWaiting;
 @property (readonly) NSString *playerName;
