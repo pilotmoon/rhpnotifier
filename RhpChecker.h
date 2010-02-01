@@ -14,6 +14,7 @@
 #define RHPCHECKER_CONNECTION_PROBLEM 1002  // problem connecting to site
 #define RHPCHECKER_RESPONSE_PROBLEM 1003	// problem with response the site gave
 #define RHPCHECKER_NEVER_CHECKED 1004		// not check attempt has yet been made
+#define RHPCHECKER_OFFLINE 1005				// network connection offline
 
 // protocol for completion notifications
 @protocol RhpCheckerDelegate

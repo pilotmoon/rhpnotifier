@@ -99,6 +99,10 @@
 			self.statusLine=@"Status: Safari login required";
 			self.loginLine=@"Not logged in";
 			break;
+		case RHPCHECKER_OFFLINE:
+			self.statusLine=@"Status: Offline";
+			self.loginLine=@"Not logged in";
+			break;
 		case RHPCHECKER_CONNECTION_PROBLEM:
 			self.statusLine=@"Status: Could not connect";
 			self.loginLine=@"Not logged in";

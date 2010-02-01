@@ -103,7 +103,13 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
 	NSLog(@"NSURLConnection sendSynchronousRequest failed. Error: %@", error);
-	status=RHPCHECKER_CONNECTION_PROBLEM;
+	if ([error domain]==NSURLErrorDomain && [error code]==NSURLErrorNotConnectedToInternet) {
+		status = RHPCHECKER_OFFLINE;
+	}
+	else {
+		status = RHPCHECKER_CONNECTION_PROBLEM;
+	}
+	
 	[self washup];
 }
 
