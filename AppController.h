@@ -45,6 +45,8 @@
 - (void)updateResult;
 - (void)updateStatus;
 
+// timer methods
 - (void)timerRoutine:(NSTimer *)timer;
+- (void)reschedule;
 
 @end

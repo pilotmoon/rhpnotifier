@@ -25,6 +25,13 @@
 	lct = [NSDate distantPast];
 	interval=0;
 	
+	// register for wake from sleep notification
+	[[[NSWorkspace sharedWorkspace] notificationCenter]
+	 addObserver:self
+		selector:@selector(handleWakeFromSleep:)
+			name:NSWorkspaceDidWakeNotification 
+		  object:[NSWorkspace sharedWorkspace]];
+	
 	rhpChecker = [[RhpChecker alloc] init];
 	[rhpChecker setDelegate:self];
 	
@@ -104,12 +111,6 @@
 	}
 }
 
-- (void)timerRoutine:(NSTimer *)unused
-{
-	NSLog(@"--> timer routine fired");
-	[rhpChecker check];
-}
-
 - (void)rhpCheckerWillCheck
 {
 	self.ready=NO;
@@ -157,16 +158,34 @@
 	self.ready=YES;
 }
 
+- (void)timerRoutine:(NSTimer *)unused
+{
+	NSLog(@"--> timer routine fired");
+	[rhpChecker check];
+}
+
+- (void)reschedule
+{
+	// if not in course of a check, reschedule check with current value of interval
+	if (ready) {
+		NSAssert([timer isValid], @"timer is not valid");
+		NSLog(@"rescehduling fire date from %@", [timer fireDate]);
+		[timer setFireDate:[[NSDate alloc] initWithTimeInterval:interval 
+													  sinceDate:lct]];
+		NSLog(@"                         to %@", [timer fireDate]);
+	}
+}
+
 - (void)checkSoon
 {
 	interval = [rhpChecker status] == RHPCHECKER_OK ? INTERVAL_MIN : 0;
-	
-	// if not in course of a check, bring the scheduled check forwards
-	if (ready) {
-		[timer setFireDate:[[NSDate alloc] initWithTimeInterval:interval 
-													  sinceDate:lct]];
-		NSLog(@"fire date changed to %@", [timer fireDate]);
-	}
+	[self reschedule];
+}
+
+- (void)handleWakeFromSleep:(NSNotification *)note
+{
+	NSLog(@"woke from sleep");
+	[self reschedule];
 }
 
 - (IBAction)goToSite:(id)sender
