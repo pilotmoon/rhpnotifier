@@ -1,4 +1,5 @@
 #import "AppController.h"
+#import "NSURL+App.h"
 #include "debug.h"
 
 #define INTERVAL_RECONNECT 10
@@ -9,9 +10,7 @@
 @implementation AppController
 
 @synthesize ready;
-@synthesize statusLine;
-@synthesize resultLine;
-@synthesize loginLine;
+@synthesize statusLine, resultLine, loginLine, loginWindowText;
 
 - (BOOL)pulldown
 {
@@ -36,6 +35,8 @@
 			name:NSWorkspaceDidWakeNotification 
 		  object:[NSWorkspace sharedWorkspace]];
 	
+	[self prepareLoginWindow];
+	
 	rhpChecker = [[RhpChecker alloc] init];
 	[rhpChecker setDelegate:self];
 	
@@ -53,6 +54,22 @@
 	[statusMenu update];
 	
 	[self schedule];
+}
+
+- (void)prepareLoginWindow
+{
+	NSString *path=[[NSBundle mainBundle] pathForResource:@"LoginWindowText"
+												   ofType:@"rtf"];
+	self.loginWindowText = [[NSAttributedString alloc] initWithPath:path
+												 documentAttributes:nil];
+}
+
+- (void)showLoginWindow
+{
+	NSLog(@"showing login window");
+	[loginWindow center];
+	NSLog(@"controller %@", [loginWindow windowController]);
+	[loginWindow makeKeyAndOrderFront:self];
 }
 
 - (void)updateResult
@@ -74,6 +91,12 @@
 					break;
 			}
 			break;
+	
+		case RHPCHECKER_COOKIE_PROBLEM:
+			self.resultLine=@"Login...";
+			[statusItem setTitle:@"RHP"];	
+			break;
+	
 		default:
 			self.resultLine=@"Go to site";
 			[statusItem setTitle:@"RHP"];	
@@ -96,7 +119,7 @@
 			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_COOKIE_PROBLEM:
-			self.statusLine=@"Status: Safari login required";
+			self.statusLine=@"Status: Cookie needed";
 			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_OFFLINE:
@@ -196,7 +219,21 @@
 
 - (IBAction)goToSite:(id)sender
 {
-	LSOpenCFURLRef((CFURLRef)[rhpChecker siteVisitUrl], NULL);
+	if (rhpChecker.status == RHPCHECKER_COOKIE_PROBLEM) {
+		[self showLoginWindow];
+	}
+	else {
+		LSOpenCFURLRef((CFURLRef)[rhpChecker siteVisitUrl], NULL);
+	}
+}
+
+- (IBAction)openInSafari:(id)sender
+{
+	if ([sender window]==loginWindow) {
+		[loginWindow close];
+	}
+	NSLog(@"opening safari");
+	[rhpChecker.siteLoginUrl openInAppWithIdentifier:@"com.apple.Safari"];
 }
 
 - (void)menuWillOpen:(NSMenu *)menu

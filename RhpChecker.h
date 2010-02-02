@@ -40,6 +40,7 @@
 	
 	// url to use when visiting site
 	NSURL *siteVisitUrl;
+	NSURL *siteLoginUrl;
 	
 	// the session cookies required for login
 	NSSet *siteCookieNames;
@@ -56,6 +57,7 @@
 @property (readonly) int gamesWaiting;
 @property (readonly) NSString *playerName;
 @property (readonly) NSURL *siteVisitUrl;
+@property (readonly) NSURL *siteLoginUrl;
 
 /* Attempt to get the number of games waiting from the site.
  Always calls the "will check" and "did check" delegate methods.

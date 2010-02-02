@@ -7,7 +7,7 @@
 @synthesize gamesWaiting;
 @synthesize playerName;
 @synthesize status;
-@synthesize siteVisitUrl;
+@synthesize siteVisitUrl, siteLoginUrl;
 @synthesize delegate;
 
 - (id)init
@@ -22,6 +22,7 @@
 	// site specific parameters
 	siteQueryUrl=[NSURL URLWithString:@"http://www.redhotpawn.com/xml/simple/gameswaitingcount_xml.php"];
 	siteVisitUrl=[NSURL URLWithString:@"http://www.redhotpawn.com/core/gameserve.php"];
+	siteLoginUrl=[NSURL URLWithString:@"http://www.redhotpawn.com/core/login.php"];
 	siteCookieNames=[NSSet setWithObjects:@"rhp_cookieid", @"rhp_uid", nil];
 	
 	return self;
