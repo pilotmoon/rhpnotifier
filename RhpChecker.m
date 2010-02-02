@@ -65,6 +65,15 @@
 	return cachedRequest;
 }
 
+- (void)washup
+{
+	// if we failed then clear the cached connection, assume it is bad
+	if(status!=RHPCHECKER_OK) {
+		[self clearCachedRequest];
+	}
+	[delegate rhpCheckerDidCheck];
+}
+
 - (void)check
 {
 	status=RHPCHECKER_DEFAULT;
@@ -73,6 +82,7 @@
 	NSURLRequest *req=[self cachedRequest];
 	if(req==nil) {
 		status=RHPCHECKER_COOKIE_PROBLEM;
+		[self washup];
 	}
 	else {
 		[self clearData];
@@ -87,17 +97,6 @@
 		[conn start];
 	}
 }
-
-
-- (void)washup
-{
-	// if we failed then clear the cached connection, assume it is bad
-	if(status!=RHPCHECKER_OK) {
-		[self clearCachedRequest];
-	}
-	[delegate rhpCheckerDidCheck];
-}
-
 
 // connection failed
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

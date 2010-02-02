@@ -47,6 +47,7 @@
 
 // timer methods
 - (void)timerRoutine:(NSTimer *)timer;
+- (void)schedule;
 - (void)reschedule;
 
 @end

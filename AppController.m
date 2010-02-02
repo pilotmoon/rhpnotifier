@@ -22,8 +22,12 @@
 {
 	[super init];
 	
+	self.ready=NO;
 	lct = [NSDate distantPast];
 	interval=0;
+	
+	[self updateResult];
+	[self updateStatus];
 	
 	// register for wake from sleep notification
 	[[[NSWorkspace sharedWorkspace] notificationCenter]
@@ -35,10 +39,6 @@
 	rhpChecker = [[RhpChecker alloc] init];
 	[rhpChecker setDelegate:self];
 	
-	self.ready=NO;
-	[self updateResult];
-	[self updateStatus];
-	
 	return self;
 }
 
@@ -49,10 +49,10 @@
 	statusItem = [bar statusItemWithLength:NSVariableStatusItemLength];
 	[statusItem setHighlightMode:YES];	
 	[statusItem setMenu:statusMenu];
-	[statusMenu setDelegate:self];	
+	[statusMenu setDelegate:self];
+	[statusMenu update];
 	
-	// kick off timer system
-	[self timerRoutine:nil];
+	[self schedule];
 }
 
 - (void)updateResult
@@ -129,7 +129,6 @@
 	// update ui
 	[self updateResult];
 	[self updateStatus];
-	[statusMenu update];
 	
 	if (rhpChecker.status == RHPCHECKER_OK) {
 		if (interval < INTERVAL_MIN) {
@@ -146,20 +145,9 @@
 		interval=INTERVAL_RECONNECT;
 	}
 	
-	// schedule next check
-	lct = [NSDate date];
-	
-	timer = [NSTimer timerWithTimeInterval:interval target:self 
-								  selector:@selector(timerRoutine:)
-								  userInfo:nil
-								   repeats:NO];
-	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-	
-	NSLog(@"last checked at %@", lct);
-	NSLog(@"new interval is %f", interval);
-	NSLog(@"timer scheduled for %@", [timer fireDate]);
-	
+	[self schedule];
 	self.ready=YES;
+	[statusMenu update];
 }
 
 - (void)timerRoutine:(NSTimer *)unused
@@ -168,11 +156,25 @@
 	[rhpChecker check];
 }
 
+- (void)schedule
+{
+	NSLog(@"last checked at %@", lct);
+
+	// schedule next check
+	lct = [NSDate date];
+	timer = [NSTimer timerWithTimeInterval:interval target:self 
+								  selector:@selector(timerRoutine:)
+								  userInfo:nil
+								   repeats:NO];
+	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+	
+	NSLog(@"new interval is %f", interval);
+	NSLog(@"timer scheduled for %@", [timer fireDate]);	
+}
+
 - (void)reschedule
 {
-	// if not in course of a check, reschedule check with current value of interval
-	if (ready) {
-		NSAssert([timer isValid], @"timer is not valid");
+	if ([timer isValid]) {
 		NSLog(@"rescehduling fire date from %@", [timer fireDate]);
 		[timer setFireDate:[[NSDate alloc] initWithTimeInterval:interval 
 													  sinceDate:lct]];
