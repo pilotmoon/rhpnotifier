@@ -4,6 +4,7 @@
 @interface AppController : NSObject <RhpCheckerDelegate> {
 	// YES if currently idle, NO if checking
 	BOOL ready;
+	BOOL menuEnabled;
 	
 	// the status text to display
 	NSString *statusLine;
@@ -40,6 +41,7 @@
 
 @property BOOL ready;
 @property (readonly) BOOL pulldown;
+@property BOOL menuEnabled;
 @property (copy) NSString *statusLine;
 @property (copy) NSString *resultLine;
 @property (copy) NSString *loginLine;

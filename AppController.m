@@ -1,5 +1,4 @@
 #import "AppController.h"
-#import "NSURL+App.h"
 #include "debug.h"
 
 #define INTERVAL_RECONNECT 10
@@ -9,7 +8,7 @@
 
 @implementation AppController
 
-@synthesize ready;
+@synthesize ready, menuEnabled;
 @synthesize statusLine, resultLine, loginLine, loginWindowText;
 
 - (BOOL)pulldown
@@ -22,6 +21,7 @@
 	[super init];
 	
 	self.ready=NO;
+	self.menuEnabled=YES;
 	lct = [NSDate distantPast];
 	interval=0;
 	
@@ -34,8 +34,6 @@
 		selector:@selector(handleWakeFromSleep:)
 			name:NSWorkspaceDidWakeNotification 
 		  object:[NSWorkspace sharedWorkspace]];
-	
-	[self prepareLoginWindow];
 	
 	rhpChecker = [[RhpChecker alloc] init];
 	[rhpChecker setDelegate:self];
@@ -51,7 +49,8 @@
 	[statusItem setHighlightMode:YES];	
 	[statusItem setMenu:statusMenu];
 	[statusMenu setDelegate:self];
-	[statusMenu update];
+	
+	[self prepareLoginWindow];
 	
 	[self schedule];
 }
@@ -62,14 +61,29 @@
 												   ofType:@"rtf"];
 	self.loginWindowText = [[NSAttributedString alloc] initWithPath:path
 												 documentAttributes:nil];
+	[loginWindow setDelegate:self];
 }
 
 - (void)showLoginWindow
 {
 	NSLog(@"showing login window");
-	[loginWindow center];
-	NSLog(@"controller %@", [loginWindow windowController]);
-	[loginWindow makeKeyAndOrderFront:self];
+	[NSApp activateIgnoringOtherApps:YES];
+	[NSApp runModalForWindow:loginWindow];
+}
+
+- (void)windowWillClose:(NSNotification *)note
+{
+	if ([note object]==loginWindow) {
+		[NSApp stopModal];
+		[self setMenuEnabled:YES];
+	}
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)note
+{
+	if ([note object]==loginWindow) {
+		[self setMenuEnabled:NO];
+	}
 }
 
 - (void)updateResult
