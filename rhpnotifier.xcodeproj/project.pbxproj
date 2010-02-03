@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		014A2F8211189DC300BCC155 /* NSString+FSRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 014A2F8111189DC300BCC155 /* NSString+FSRef.m */; };
-		014A2FDF1118A84300BCC155 /* NSURL+App.m in Sources */ = {isa = PBXBuildFile; fileRef = 014A2FDE1118A84300BCC155 /* NSURL+App.m */; };
 		017525AF1118301800F86785 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017525AE1118301800F86785 /* AppKit.framework */; };
 		0175277811187D7300F86785 /* LoginWindowText.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0175277611187D7300F86785 /* LoginWindowText.rtf */; };
 		01A5C2F8110631B400651AB9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F1110631B400651AB9 /* AppController.m */; };
@@ -20,10 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		014A2F8011189DC300BCC155 /* NSString+FSRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FSRef.h"; sourceTree = "<group>"; };
-		014A2F8111189DC300BCC155 /* NSString+FSRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FSRef.m"; sourceTree = "<group>"; };
-		014A2FDD1118A84300BCC155 /* NSURL+App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+App.h"; sourceTree = "<group>"; };
-		014A2FDE1118A84300BCC155 /* NSURL+App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+App.m"; sourceTree = "<group>"; };
 		017525AE1118301800F86785 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0175277711187D7300F86785 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/LoginWindowText.rtf; sourceTree = "<group>"; };
 		01A5C2F0110631B400651AB9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
@@ -61,13 +55,9 @@
 				01A5C2F0110631B400651AB9 /* AppController.h */,
 				01A5C2F1110631B400651AB9 /* AppController.m */,
 				01A5C2F4110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.h */,
-				014A2F8011189DC300BCC155 /* NSString+FSRef.h */,
-				014A2F8111189DC300BCC155 /* NSString+FSRef.m */,
 				01A5C2F5110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m */,
 				01A5C2F6110631B400651AB9 /* RhpChecker.h */,
 				01A5C2F7110631B400651AB9 /* RhpChecker.m */,
-				014A2FDD1118A84300BCC155 /* NSURL+App.h */,
-				014A2FDE1118A84300BCC155 /* NSURL+App.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -197,8 +187,6 @@
 				01A5C2F8110631B400651AB9 /* AppController.m in Sources */,
 				01A5C2FA110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m in Sources */,
 				01A5C2FB110631B400651AB9 /* RhpChecker.m in Sources */,
-				014A2F8211189DC300BCC155 /* NSString+FSRef.m in Sources */,
-				014A2FDF1118A84300BCC155 /* NSURL+App.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -223,7 +223,7 @@
 		[self showLoginWindow];
 	}
 	else {
-		LSOpenCFURLRef((CFURLRef)[rhpChecker siteVisitUrl], NULL);
+		[[NSWorkspace sharedWorkspace] openURL:[rhpChecker siteVisitUrl]];
 	}
 }
 
@@ -233,7 +233,11 @@
 		[loginWindow close];
 	}
 	NSLog(@"opening safari");
-	[rhpChecker.siteLoginUrl openInAppWithIdentifier:@"com.apple.Safari"];
+	[[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:[rhpChecker siteLoginUrl]]
+					withAppBundleIdentifier:@"com.apple.Safari"
+									options:NSWorkspaceLaunchDefault
+			 additionalEventParamDescriptor:nil
+						  launchIdentifiers:nil];
 }
 
 - (void)menuWillOpen:(NSMenu *)menu
