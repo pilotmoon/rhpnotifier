@@ -51,6 +51,7 @@
 // the available UI actions
 - (IBAction)goToSite:(id)sender;
 - (IBAction)openInSafari:(id)sender;
+- (IBAction)about:(id)sender;
 
 // UI update methods
 - (void)updateResult;

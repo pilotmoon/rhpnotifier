@@ -71,6 +71,12 @@
 	[NSApp runModalForWindow:loginWindow];
 }
 
+- (IBAction)about:(id)sender
+{
+	[NSApp activateIgnoringOtherApps:YES];
+	[NSApp orderFrontStandardAboutPanel:nil];
+}
+
 - (void)windowWillClose:(NSNotification *)note
 {
 	if ([note object]==loginWindow) {
