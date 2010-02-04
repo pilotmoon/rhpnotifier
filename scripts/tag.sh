@@ -1,8 +1,16 @@
 #!/bin/sh
-# script for tagging releases on the master branch
+# script for tagging releases
+
 tag=$1
 if [ "$tag" == "" ]; then
 	echo "No tag specified"
+	exit
+fi
+
+# fail unless on master branch
+head=`git symbolic-ref HEAD`
+if [ "$head" != "refs/heads/master" ]; then
+	echo "Not on master branch. Head is $head"
 	exit
 fi
 
