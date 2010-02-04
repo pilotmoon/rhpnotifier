@@ -57,8 +57,8 @@
 
 - (void)prepareLoginWindow
 {
-	NSString *path=[[NSBundle mainBundle] pathForResource:@"LoginWindowText"
-												   ofType:@"rtf"];
+	NSString *path=[[NSBundle mainBundle] pathForResource:@"Login"
+												   ofType:@"html"];
 	self.loginWindowText = [[NSAttributedString alloc] initWithPath:path
 												 documentAttributes:nil];
 	[loginWindow setDelegate:self];
