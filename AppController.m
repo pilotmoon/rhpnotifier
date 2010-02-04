@@ -37,6 +37,15 @@
 	
 	rhpChecker = [[RhpChecker alloc] init];
 	[rhpChecker setDelegate:self];
+
+	// load up status icons
+	statusImageBlack=[NSImage imageNamed:@"PawnStatusBlack.png"];
+	statusImageRed=[NSImage imageNamed:@"PawnStatusRed.png"];
+	statusImageGrey=[NSImage imageNamed:@"PawnStatusGrey.png"];
+	NSSize size={13, 17};
+	[statusImageBlack setSize:size];
+	[statusImageRed setSize:size];
+	[statusImageGrey setSize:size];
 	
 	return self;
 }
@@ -50,8 +59,10 @@
 	[statusItem setMenu:statusMenu];
 	[statusMenu setDelegate:self];
 	
+	[self updateIcon];
 	[self prepareLoginWindow];
 	
+	// schedule the very first check
 	[self schedule];
 }
 
@@ -92,34 +103,48 @@
 	}
 }
 
-- (void)updateResult
+- (void)updateIcon
 {
 	switch(rhpChecker.status) {
 		case RHPCHECKER_OK:
 			switch (rhpChecker.gamesWaiting) {
 				case 0:
-					self.resultLine=@"0 games waiting";
-					[statusItem setTitle:@"RHP"];	
+					[statusItem setTitle:nil];	
+					[statusItem setImage:statusImageBlack];
 					break;
+				default:
+					[statusItem setTitle:[NSString stringWithFormat:@"%d",rhpChecker.gamesWaiting]];			
+					[statusItem setImage:statusImageRed];
+					break;
+			}
+			break;
+		default:
+			[statusItem setTitle:nil];
+			[statusItem setImage:statusImageGrey];
+			break;
+	}
+}
+
+- (void)updateResult
+{
+	switch(rhpChecker.status) {
+		case RHPCHECKER_OK:
+			switch (rhpChecker.gamesWaiting) {
 				case 1:
 					self.resultLine=@"1 game waiting";
-					[statusItem setTitle:@"RHP:1"];	
 					break;
 				default:
 					self.resultLine=[NSString stringWithFormat:@"%d games waiting", rhpChecker.gamesWaiting];
-					[statusItem setTitle:[NSString stringWithFormat:@"RHP:%d",rhpChecker.gamesWaiting]];			
 					break;
 			}
 			break;
 	
 		case RHPCHECKER_COOKIE_PROBLEM:
 			self.resultLine=@"Login...";
-			[statusItem setTitle:@"RHP"];	
 			break;
 	
 		default:
 			self.resultLine=@"Go to site";
-			[statusItem setTitle:@"RHP"];	
 			break;
 	}
 	
@@ -172,6 +197,7 @@
 	// update ui
 	[self updateResult];
 	[self updateStatus];
+	[self updateIcon];
 	
 	if (rhpChecker.status == RHPCHECKER_OK) {
 		if (interval < INTERVAL_MIN) {

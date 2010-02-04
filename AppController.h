@@ -4,6 +4,8 @@
 @interface AppController : NSObject <RhpCheckerDelegate> {
 	// YES if currently idle, NO if checking
 	BOOL ready;
+	
+	// whether menu items should be enabled
 	BOOL menuEnabled;
 	
 	// the status text to display
@@ -14,7 +16,8 @@
 	
 	// the login status text
 	NSString *loginLine;
-	
+
+	// text to display in login window
 	NSAttributedString *loginWindowText;
 	
 	// status bar item
@@ -37,6 +40,11 @@
 	
 	// login window
 	IBOutlet NSWindow *loginWindow;
+	
+	// status icons
+	NSImage *statusImageBlack;
+	NSImage *statusImageRed;
+	NSImage *statusImageGrey;
 }
 
 @property BOOL ready;
@@ -56,6 +64,7 @@
 // UI update methods
 - (void)updateResult;
 - (void)updateStatus;
+- (void)updateIcon;
 
 - (void)prepareLoginWindow;
 - (void)showLoginWindow;
