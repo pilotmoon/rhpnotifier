@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01250E25112D533F00277879 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 01250E23112D533F00277879 /* Credits.html */; };
+		01250E2C112D547B00277879 /* Credits.md in Resources */ = {isa = PBXBuildFile; fileRef = 01250E2A112D547B00277879 /* Credits.md */; };
+		01250E2D112D547B00277879 /* License.md in Resources */ = {isa = PBXBuildFile; fileRef = 01250E2B112D547B00277879 /* License.md */; };
+		01250E30112D549A00277879 /* CreditsStub.html in Resources */ = {isa = PBXBuildFile; fileRef = 01250E2E112D549A00277879 /* CreditsStub.html */; };
 		015E1710111CE0C9006A9BFB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015E170F111CE0C9006A9BFB /* Sparkle.framework */; };
 		015E171C111CE0ED006A9BFB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 015E170F111CE0C9006A9BFB /* Sparkle.framework */; };
 		015E1727111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */; };
@@ -20,7 +24,6 @@
 		01E7B561111B547100D5DACE /* PawnStatusBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E7B55E111B547100D5DACE /* PawnStatusBlack.png */; };
 		01E7B562111B547100D5DACE /* PawnStatusGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E7B55F111B547100D5DACE /* PawnStatusGrey.png */; };
 		01E7B563111B547100D5DACE /* PawnStatusRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E7B560111B547100D5DACE /* PawnStatusRed.png */; };
-		01F0E5A91119C0E700190230 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 01F0E5A71119C0E700190230 /* Credits.html */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 /* End PBXBuildFile section */
@@ -39,6 +42,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01250E24112D533F00277879 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = English; path = English.lproj/Credits.html; sourceTree = "<group>"; };
+		01250E2A112D547B00277879 /* Credits.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits.md; sourceTree = "<group>"; };
+		01250E2B112D547B00277879 /* License.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.md; sourceTree = "<group>"; };
+		01250E2F112D549A00277879 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = English; path = English.lproj/CreditsStub.html; sourceTree = "<group>"; };
 		015E170F111CE0C9006A9BFB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhpnotifier_dsa_pub.pem; sourceTree = "<group>"; };
 		017525AE1118301800F86785 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -55,7 +62,6 @@
 		01E7B55E111B547100D5DACE /* PawnStatusBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PawnStatusBlack.png; path = graphics/PawnStatusBlack.png; sourceTree = "<group>"; };
 		01E7B55F111B547100D5DACE /* PawnStatusGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PawnStatusGrey.png; path = graphics/PawnStatusGrey.png; sourceTree = "<group>"; };
 		01E7B560111B547100D5DACE /* PawnStatusRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PawnStatusRed.png; path = graphics/PawnStatusRed.png; sourceTree = "<group>"; };
-		01F0E5A81119C0E700190230 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = English; path = English.lproj/Credits.html; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* rhpnotifier_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rhpnotifier_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,10 +83,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01250E35112D551500277879 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				01250E2A112D547B00277879 /* Credits.md */,
+				01250E2B112D547B00277879 /* License.md */,
+				01250E2E112D549A00277879 /* CreditsStub.html */,
+			);
+			name = Text;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				01B0C83D110F24DB002052CC /* debug.h */,
 				01A5C2F0110631B400651AB9 /* AppController.h */,
 				01A5C2F1110631B400651AB9 /* AppController.m */,
 				01A5C2F4110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.h */,
@@ -131,6 +146,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				01250E35112D551500277879 /* Text */,
+				01B0C83D110F24DB002052CC /* debug.h */,
 				256AC3F00F4B6AF500CF3369 /* rhpnotifier_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -140,13 +157,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				01250E23112D533F00277879 /* Credits.html */,
 				015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */,
 				01E7B55E111B547100D5DACE /* PawnStatusBlack.png */,
 				01E7B55F111B547100D5DACE /* PawnStatusGrey.png */,
 				01E7B560111B547100D5DACE /* PawnStatusRed.png */,
 				01E7B55C111B545B00D5DACE /* PawnIcon.icns */,
 				01E7B422111ABE0900D5DACE /* Login.html */,
-				01F0E5A71119C0E700190230 /* Credits.html */,
 				01A5C3091106328200651AB9 /* App.xib */,
 				8D1107310486CEB800E47090 /* rhpnotifier-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -174,6 +191,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				015E1725111CE102006A9BFB /* CopyFiles */,
+				01250E04112D49E700277879 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -209,17 +227,40 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				01A5C30B1106328200651AB9 /* App.xib in Resources */,
-				01F0E5A91119C0E700190230 /* Credits.html in Resources */,
 				01E7B424111ABE0900D5DACE /* Login.html in Resources */,
 				01E7B55D111B545B00D5DACE /* PawnIcon.icns in Resources */,
 				01E7B561111B547100D5DACE /* PawnStatusBlack.png in Resources */,
 				01E7B562111B547100D5DACE /* PawnStatusGrey.png in Resources */,
 				01E7B563111B547100D5DACE /* PawnStatusRed.png in Resources */,
 				015E1727111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem in Resources */,
+				01250E25112D533F00277879 /* Credits.html in Resources */,
+				01250E2C112D547B00277879 /* Credits.md in Resources */,
+				01250E2D112D547B00277879 /* License.md in Resources */,
+				01250E30112D549A00277879 /* CreditsStub.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01250E04112D49E700277879 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/License.md",
+				"$(SRCROOT)/Credits.md",
+				"$(SRCROOT)/English.lproj/CreditsStub.html",
+			);
+			outputPaths = (
+				"$(SRCROOT)/English.lproj/Credits.html",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cat English.lproj/CreditsStub.html > English.lproj/Credits.html\nbluecloth -f Credits.md >> English.lproj/Credits.html\nbluecloth -f License.md >> English.lproj/Credits.html";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
@@ -236,6 +277,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		01250E23112D533F00277879 /* Credits.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01250E24112D533F00277879 /* English */,
+			);
+			name = Credits.html;
+			sourceTree = "<group>";
+		};
+		01250E2E112D549A00277879 /* CreditsStub.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01250E2F112D549A00277879 /* English */,
+			);
+			name = CreditsStub.html;
+			sourceTree = "<group>";
+		};
 		01A5C3091106328200651AB9 /* App.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -250,14 +307,6 @@
 				01E7B423111ABE0900D5DACE /* English */,
 			);
 			name = Login.html;
-			sourceTree = "<group>";
-		};
-		01F0E5A71119C0E700190230 /* Credits.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01F0E5A81119C0E700190230 /* English */,
-			);
-			name = Credits.html;
 			sourceTree = "<group>";
 		};
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {

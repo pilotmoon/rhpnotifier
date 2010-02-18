@@ -1,6 +1,5 @@
 #import "RhpChecker.h"
 #import "NSHTTPCookieStorage+FilterNames.h"
-#include "debug.h"
 
 @implementation RhpChecker
 
