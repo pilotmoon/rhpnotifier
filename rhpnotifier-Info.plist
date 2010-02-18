@@ -26,8 +26,6 @@
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>LSUIElement</key>
 	<true/>
-	<key>NSHumanReadableCopyright</key>
-	<string>© 2010 Nicholas Moore</string>
 	<key>NSMainNibFile</key>
 	<string>App</string>
 	<key>NSPrincipalClass</key>
