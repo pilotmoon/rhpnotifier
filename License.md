@@ -6,17 +6,12 @@ Copyright (c) 2010 Nicholas Moore.
 The software includes third-party components (as indicated in the Credits) which
 are subject to their own copyright notices and licenses.
 
-Terms of Use
-------------
-
-RHP Notifier is an independent product not officially affiliated with or
-endorsed by redhotpawn.com (RHP).
-Whilst the software has been designed to be compatible with RHP systems and
-policies, you use it at your own risk.
+License
+-------
 
 RHP Notifier is available at <http://reqr.net/software/rhpnpotifier/>. The
 source code is available at <http://github.com/invariant/rhpnotifier>. 
-The software and source are made available under the following terms (MIT License):
+The software and source are made available under the following terms (MIT License).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
