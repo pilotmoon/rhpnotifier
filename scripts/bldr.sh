@@ -1,3 +1,9 @@
+tag=$1
+if [ "$tag" == "" ]; then
+	echo "No tag specified"
+	exit
+fi
+
 echo generating web content
 mkdir -p build/web
 erb templates/index.html > build/web/index.html

@@ -18,8 +18,7 @@ RHP Notifier is available at <http://reqr.net/software/rhpnpotifier/>. The
 source code is available at <http://github.com/invariant/rhpnotifier>. 
 The software and source are made available under the terms of the MIT License.
 
-MIT License
------------
+### MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
