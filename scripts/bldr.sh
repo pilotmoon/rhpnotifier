@@ -1,5 +1,5 @@
 echo generating web content
-mkdir build/web
+mkdir -p build/web
 erb templates/index.html > build/web/index.html
 erb templates/rnotes.html > build/web/$tag.html
 
