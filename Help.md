@@ -1,5 +1,5 @@
-How to use RHP Notifier
------------------------
+User Guide
+----------
 
 ### Installation
 
