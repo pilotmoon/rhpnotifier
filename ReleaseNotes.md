@@ -1,3 +1,3 @@
-v0.4
-----
+### v0.4
+
 * First public release
