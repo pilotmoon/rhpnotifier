@@ -1,4 +1,5 @@
 #import "AppController.h"
+#import "LoginItem.h"
 
 #define INTERVAL_RECONNECT 10
 #define INTERVAL_MIN 60
@@ -295,7 +296,25 @@
 
 - (IBAction)checkNow:(id)sender
 {
-	NSLog(@"checknow");
+	NSLog(@"checknowself");
 }
+
+- (NSURL *)appURL
+{
+	return [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+}
+
+- (BOOL)startAtLogin
+{
+	return [LoginItem willStartAtLogin:[self appURL]];
+}
+
+- (void)setStartAtLogin:(BOOL)enabled
+{
+	[self willChangeValueForKey:@"startAtLogin"];
+	[LoginItem setStartAtLogin:[self appURL] enabled:enabled];
+	[self didChangeValueForKey:@"startAtLogin"];
+}
+
 
 @end
