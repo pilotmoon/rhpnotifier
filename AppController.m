@@ -27,6 +27,7 @@
 	
 	[self updateResult];
 	[self updateStatus];
+	[self updatePlayerName];
 	
 	// register for wake from sleep notification
 	[[[NSWorkspace sharedWorkspace] notificationCenter]
@@ -150,14 +151,23 @@
 	
 }
 
+- (void)updatePlayerName
+{
+	if ([self statusOk]) {
+		self.loginLine=[NSString stringWithFormat:@"Player name: %@",
+						rhpChecker.playerName];
+	}
+	else {
+		self.loginLine=@"Player name: (unknown)";
+	}
+}
+
 - (void)updateStatus
 {
 	switch(rhpChecker.status)
 	{
 		case RHPCHECKER_OK:
 			self.statusLine=@"Status: OK";
-			self.loginLine=[NSString stringWithFormat:@"Player name: %@",
-							rhpChecker.playerName];
 			break;
 		case RHPCHECKER_NEVER_CHECKED:
 			self.statusLine=@"Status: Application starting...";
@@ -195,6 +205,7 @@
 	// update ui
 	[self updateResult];
 	[self updateStatus];
+	[self updatePlayerName];
 	[self updateIcon];
 	
 	if ([self statusOk]) {
@@ -255,6 +266,14 @@
 	[self reschedule];
 }
 
+- (IBAction)checkNow:(id)sender
+{
+	if([self ready]) {
+		interval = 0;
+		[self reschedule];	
+	}
+}
+
 - (void)handleWakeFromSleep:(NSNotification *)note
 {
 	NSLog(@"woke from sleep");
@@ -287,16 +306,15 @@
 - (void)menuWillOpen:(NSMenu *)menu
 {
 	[self checkSoon];
+	
+	// trigger refresh of item
+	[self willChangeValueForKey:@"startAtLogin"];
+	[self didChangeValueForKey:@"startAtLogin"];
 }
 
 - (BOOL)statusOk
 {
 	return (rhpChecker.status==RHPCHECKER_OK);
-}
-
-- (IBAction)checkNow:(id)sender
-{
-	NSLog(@"checknowself");
 }
 
 - (NSURL *)appURL

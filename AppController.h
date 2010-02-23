@@ -67,6 +67,7 @@
 // UI update methods
 - (void)updateResult;
 - (void)updateStatus;
+- (void)updatePlayerName;
 - (void)updateIcon;
 
 - (void)prepareLoginWindow;
