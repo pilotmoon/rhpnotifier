@@ -15,6 +15,7 @@
 #define RHPCHECKER_RESPONSE_PROBLEM 1003	// problem with response the site gave
 #define RHPCHECKER_NEVER_CHECKED 1004		// not check attempt has yet been made
 #define RHPCHECKER_OFFLINE 1005				// network connection offline
+#define RHPCHECKER_NO_PERMISSION 1006		// no permission to use cookie
 
 // protocol for completion notifications
 @protocol RhpCheckerDelegate
@@ -50,9 +51,13 @@
 	
 	// the received data
 	NSMutableData *data;
+	
+	// has permission to use cookie
+	BOOL permission;
 }
 
 @property NSObject <RhpCheckerDelegate> *delegate;
+@property BOOL permission;
 @property (readonly) int status;
 @property (readonly) int gamesWaiting;
 @property (readonly) NSString *playerName;

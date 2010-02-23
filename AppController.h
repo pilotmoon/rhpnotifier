@@ -41,6 +41,9 @@
 	// login window
 	IBOutlet NSWindow *loginWindow;
 	
+	// loginwindow button
+	IBOutlet NSButton *loginButton;
+	
 	// status icons
 	NSImage *statusImageBlack;
 	NSImage *statusImageRed;
@@ -50,6 +53,7 @@
 @property BOOL ready;
 @property (readonly) BOOL pulldown;
 @property (readonly) BOOL statusOk;
+@property (readonly) BOOL cookieOk;
 @property BOOL startAtLogin;
 @property BOOL menuEnabled;
 @property (copy) NSString *statusLine;

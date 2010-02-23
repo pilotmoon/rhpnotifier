@@ -6,6 +6,8 @@
 #define INTERVAL_MAX 1800
 #define INTERVAL_MULTIPLIER 1.2
 
+static NSString * const  permissionKey = @"RHPCookiePermission";
+
 @implementation AppController
 
 @synthesize ready, menuEnabled;
@@ -48,6 +50,8 @@
 	[statusImageRed setSize:size];
 	[statusImageGrey setSize:size];
 	
+	rhpChecker.permission=[[NSUserDefaults standardUserDefaults] boolForKey:permissionKey];
+	
 	return self;
 }
 
@@ -61,7 +65,6 @@
 	[statusMenu setDelegate:self];
 	
 	[self updateIcon];
-	[self prepareLoginWindow];
 	
 	// schedule the very first check
 	[self schedule];
@@ -73,12 +76,35 @@
 												   ofType:@"html"];
 	self.loginWindowText = [[NSAttributedString alloc] initWithPath:path
 												 documentAttributes:nil];
+	[loginButton setTitle:@"Visit Site in Safari"];
+	[loginButton setAction:@selector(openInSafari:)];
+	[loginWindow setDelegate:self];
+}
+
+
+- (void)preparePermissionWindow
+{
+	NSString *path=[[NSBundle mainBundle] pathForResource:@"Permission"
+												   ofType:@"html"];
+	self.loginWindowText = [[NSAttributedString alloc] initWithPath:path
+												 documentAttributes:nil];
+	[loginButton setTitle:@"Login"];
+	[loginButton setAction:@selector(givePermission:)];
 	[loginWindow setDelegate:self];
 }
 
 - (void)showLoginWindow
 {
 	NSLog(@"showing login window");
+	[self prepareLoginWindow];
+	[NSApp activateIgnoringOtherApps:YES];
+	[NSApp runModalForWindow:loginWindow];
+}
+
+- (void)showPermissionWindow
+{
+	NSLog(@"showing permission window");
+	[self preparePermissionWindow];
 	[NSApp activateIgnoringOtherApps:YES];
 	[NSApp runModalForWindow:loginWindow];
 }
@@ -141,6 +167,7 @@
 			break;
 	
 		case RHPCHECKER_COOKIE_PROBLEM:
+		case RHPCHECKER_NO_PERMISSION:
 			self.resultLine=@"Login...";
 			break;
 	
@@ -169,6 +196,9 @@
 		case RHPCHECKER_OK:
 			self.statusLine=@"Status: OK";
 			break;
+		case RHPCHECKER_NO_PERMISSION:
+			self.statusLine=@"Status: Ready to login";
+			break;
 		case RHPCHECKER_NEVER_CHECKED:
 			self.statusLine=@"Status: Application starting...";
 			break;
@@ -193,6 +223,7 @@
 	self.ready=NO;
 	self.statusLine=@"Status: Checking...";
 	[self willChangeValueForKey:@"statusOk"];
+	[self willChangeValueForKey:@"cookieOk"];
 	[statusMenu update];
 }
 
@@ -201,6 +232,7 @@
 	NSLog(@"check complete");
 
 	[self didChangeValueForKey:@"statusOk"];
+	[self didChangeValueForKey:@"cookieOk"];
 	
 	// update ui
 	[self updateResult];
@@ -280,10 +312,23 @@
 	[self reschedule];
 }
 
+- (IBAction)givePermission:(id)sender
+{
+	if ([sender window]==loginWindow) {
+		[loginWindow close];
+	}
+	rhpChecker.permission=YES;
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:permissionKey];
+	[self checkSoon];
+}
+
 - (IBAction)goToSite:(id)sender
 {
 	if (rhpChecker.status == RHPCHECKER_COOKIE_PROBLEM) {
 		[self showLoginWindow];
+	}
+	else if (rhpChecker.status == RHPCHECKER_NO_PERMISSION) {
+		[self showPermissionWindow];
 	}
 	else {
 		[[NSWorkspace sharedWorkspace] openURL:[rhpChecker siteVisitUrl]];
@@ -315,6 +360,12 @@
 - (BOOL)statusOk
 {
 	return (rhpChecker.status==RHPCHECKER_OK);
+}
+
+- (BOOL)cookieOk
+{
+	return (rhpChecker.status!=RHPCHECKER_COOKIE_PROBLEM && 
+			rhpChecker.status!=RHPCHECKER_NO_PERMISSION);
 }
 
 - (NSURL *)appURL

@@ -20,6 +20,7 @@
 		01A5C2FB110631B400651AB9 /* RhpChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F7110631B400651AB9 /* RhpChecker.m */; };
 		01A5C30B1106328200651AB9 /* App.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A5C3091106328200651AB9 /* App.xib */; };
 		01C8931C1133E08E00FE2280 /* LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C8931B1133E08E00FE2280 /* LoginItem.m */; };
+		01C894DF11342A1200FE2280 /* Permission.html in Resources */ = {isa = PBXBuildFile; fileRef = 01C894DE11342A1200FE2280 /* Permission.html */; };
 		01E7B424111ABE0900D5DACE /* Login.html in Resources */ = {isa = PBXBuildFile; fileRef = 01E7B422111ABE0900D5DACE /* Login.html */; };
 		01E7B55D111B545B00D5DACE /* PawnIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 01E7B55C111B545B00D5DACE /* PawnIcon.icns */; };
 		01E7B561111B547100D5DACE /* PawnStatusBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E7B55E111B547100D5DACE /* PawnStatusBlack.png */; };
@@ -60,6 +61,7 @@
 		01B0C83D110F24DB002052CC /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
 		01C8931A1133E08E00FE2280 /* LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItem.h; sourceTree = "<group>"; };
 		01C8931B1133E08E00FE2280 /* LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItem.m; sourceTree = "<group>"; };
+		01C894DE11342A1200FE2280 /* Permission.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Permission.html; sourceTree = "<group>"; };
 		01E7B423111ABE0900D5DACE /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = English; path = English.lproj/Login.html; sourceTree = "<group>"; };
 		01E7B55C111B545B00D5DACE /* PawnIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = PawnIcon.icns; path = graphics/PawnIcon.icns; sourceTree = "<group>"; };
 		01E7B55E111B547100D5DACE /* PawnStatusBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PawnStatusBlack.png; path = graphics/PawnStatusBlack.png; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				01A5C3091106328200651AB9 /* App.xib */,
 				8D1107310486CEB800E47090 /* rhpnotifier-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				01C894DE11342A1200FE2280 /* Permission.html */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				01250E2C112D547B00277879 /* Credits.md in Resources */,
 				01250E2D112D547B00277879 /* License.md in Resources */,
 				01250E30112D549A00277879 /* CreditsStub.html in Resources */,
+				01C894DF11342A1200FE2280 /* Permission.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

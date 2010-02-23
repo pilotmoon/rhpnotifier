@@ -5,7 +5,7 @@
 
 @synthesize gamesWaiting;
 @synthesize playerName;
-@synthesize status;
+@synthesize status, permission;
 @synthesize siteVisitUrl, siteLoginUrl;
 @synthesize delegate;
 
@@ -17,6 +17,7 @@
 	gamesWaiting=0;
 	playerName=nil;
 	status=RHPCHECKER_NEVER_CHECKED;
+	permission=NO;
 	
 	// site specific parameters
 	siteQueryUrl=[NSURL URLWithString:@"http://www.redhotpawn.com/xml/simple/gameswaitingcount_xml.php"];
@@ -78,24 +79,31 @@
 {
 	status=RHPCHECKER_DEFAULT;
 	[delegate rhpCheckerWillCheck];
-
+	
 	NSURLRequest *req=[self cachedRequest];
 	if(req==nil) {
 		status=RHPCHECKER_COOKIE_PROBLEM;
 		[self washup];
+		return;
 	}
-	else {
-		[self clearData];
-		
-		NSURLConnection *conn=[[NSURLConnection alloc] initWithRequest:req
-															  delegate:self
-													  startImmediately:NO];
-		/* must schedule in "common modes" so it will work regardless
-		 of whether the a menu is open or not */
-		[conn scheduleInRunLoop:[NSRunLoop currentRunLoop]
-						forMode:NSRunLoopCommonModes];
-		[conn start];
+	
+	if (![self permission]) {
+		status=RHPCHECKER_NO_PERMISSION;
+		[self washup];
+		return;
 	}
+
+	[self clearData];
+	
+	NSURLConnection *conn=[[NSURLConnection alloc] initWithRequest:req
+														  delegate:self
+												  startImmediately:NO];
+	/* must schedule in "common modes" so it will work regardless
+	 of whether the a menu is open or not */
+	[conn scheduleInRunLoop:[NSRunLoop currentRunLoop]
+					forMode:NSRunLoopCommonModes];
+	[conn start];
+
 }
 
 // connection failed
