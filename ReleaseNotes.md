@@ -1,3 +1,3 @@
-### v0.4
+### Version 0.4 beta 1 (23 Feb 2010)
 
-* First public release
+* Initial release
