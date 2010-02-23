@@ -49,6 +49,7 @@
 
 @property BOOL ready;
 @property (readonly) BOOL pulldown;
+@property (readonly) BOOL statusOk;
 @property BOOL menuEnabled;
 @property (copy) NSString *statusLine;
 @property (copy) NSString *resultLine;

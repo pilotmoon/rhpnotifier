@@ -1,5 +1,4 @@
 #import "AppController.h"
-#include "debug.h"
 
 #define INTERVAL_RECONNECT 10
 #define INTERVAL_MIN 60
@@ -156,29 +155,24 @@
 	{
 		case RHPCHECKER_OK:
 			self.statusLine=@"Status: OK";
-			self.loginLine=[NSString stringWithFormat:@"Logged in as %@",
+			self.loginLine=[NSString stringWithFormat:@"Player name: %@",
 							rhpChecker.playerName];
 			break;
 		case RHPCHECKER_NEVER_CHECKED:
 			self.statusLine=@"Status: Application starting...";
-			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_COOKIE_PROBLEM:
 			self.statusLine=@"Status: Cookie needed";
-			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_OFFLINE:
 			self.statusLine=@"Status: Offline";
-			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_CONNECTION_PROBLEM:
 			self.statusLine=@"Status: Could not connect";
-			self.loginLine=@"Not logged in";
 			break;
 		case RHPCHECKER_RESPONSE_PROBLEM:
 		default:
 			self.statusLine=@"Status: Site response error";
-			self.loginLine=@"Not logged in";
 			break;
 	}
 }
@@ -187,19 +181,22 @@
 {
 	self.ready=NO;
 	self.statusLine=@"Status: Checking...";
+	[self willChangeValueForKey:@"statusOk"];
 	[statusMenu update];
 }
 
 - (void)rhpCheckerDidCheck
 {
 	NSLog(@"check complete");
+
+	[self didChangeValueForKey:@"statusOk"];
 	
 	// update ui
 	[self updateResult];
 	[self updateStatus];
 	[self updateIcon];
 	
-	if (rhpChecker.status == RHPCHECKER_OK) {
+	if ([self statusOk]) {
 		if (interval < INTERVAL_MIN) {
 			interval = INTERVAL_MIN;
 		}
@@ -289,6 +286,11 @@
 - (void)menuWillOpen:(NSMenu *)menu
 {
 	[self checkSoon];
+}
+
+- (BOOL)statusOk
+{
+	return (rhpChecker.status==RHPCHECKER_OK);
 }
 
 @end
