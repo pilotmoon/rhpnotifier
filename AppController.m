@@ -88,7 +88,7 @@ static NSString * const  permissionKey = @"RHPCookiePermission";
 												   ofType:@"html"];
 	self.loginWindowText = [[NSAttributedString alloc] initWithPath:path
 												 documentAttributes:nil];
-	[loginButton setTitle:@"Login"];
+	[loginButton setTitle:@"Connect"];
 	[loginButton setAction:@selector(givePermission:)];
 	[loginWindow setDelegate:self];
 }
@@ -168,7 +168,7 @@ static NSString * const  permissionKey = @"RHPCookiePermission";
 	
 		case RHPCHECKER_COOKIE_PROBLEM:
 		case RHPCHECKER_NO_PERMISSION:
-			self.resultLine=@"Login...";
+			self.resultLine=@"Connect...";
 			break;
 	
 		default:

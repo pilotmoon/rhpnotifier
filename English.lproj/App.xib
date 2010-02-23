@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="44"/>
 			<integer value="2"/>
-			<integer value="45"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -189,7 +189,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{93, 459}, {379, 256}}</string>
 				<int key="NSWTFlags">1685585920</int>
-				<string key="NSWindowTitle">RHP Notifier Login</string>
+				<string key="NSWindowTitle">RHP Notifier</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
