@@ -96,6 +96,24 @@
 						<reference key="NSOnImage" ref="508418370"/>
 						<reference key="NSMixedImage" ref="721119956"/>
 					</object>
+					<object class="NSMenuItem" id="171024870">
+						<reference key="NSMenu" ref="361934612"/>
+						<string key="NSTitle">Check Now</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="508418370"/>
+						<reference key="NSMixedImage" ref="721119956"/>
+					</object>
+					<object class="NSMenuItem" id="948050430">
+						<reference key="NSMenu" ref="361934612"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<bool key="NSIsSeparator">YES</bool>
+						<string key="NSTitle"/>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="508418370"/>
+						<reference key="NSMixedImage" ref="721119956"/>
+					</object>
 					<object class="NSMenuItem" id="10866812">
 						<reference key="NSMenu" ref="361934612"/>
 						<string key="NSTitle">Settings</string>
@@ -333,7 +351,7 @@
 						<string key="label">enabled: pulldown</string>
 						<reference key="source" ref="817557815"/>
 						<reference key="destination" ref="390651666"/>
-						<object class="NSNibBindingConnector" key="connector" id="678876658">
+						<object class="NSNibBindingConnector" key="connector" id="1069987898">
 							<reference key="NSSource" ref="817557815"/>
 							<reference key="NSDestination" ref="390651666"/>
 							<string key="NSLabel">enabled: pulldown</string>
@@ -463,11 +481,35 @@
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSNegateBoolean</string>
 							</object>
-							<reference key="NSPreviousConnector" ref="678876658"/>
+							<reference key="NSPreviousConnector" ref="1069987898"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
 					<int key="connectionID">81</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkNow:</string>
+						<reference key="source" ref="390651666"/>
+						<reference key="destination" ref="171024870"/>
+					</object>
+					<int key="connectionID">84</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: ready</string>
+						<reference key="source" ref="171024870"/>
+						<reference key="destination" ref="390651666"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="171024870"/>
+							<reference key="NSDestination" ref="390651666"/>
+							<string key="NSLabel">enabled: ready</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">ready</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">87</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -515,6 +557,8 @@
 							<reference ref="763135983"/>
 							<reference ref="817557815"/>
 							<reference ref="10866812"/>
+							<reference ref="171024870"/>
+							<reference ref="948050430"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -655,6 +699,16 @@
 						<reference key="object" ref="210648269"/>
 						<reference key="parent" ref="37420484"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">82</int>
+						<reference key="object" ref="171024870"/>
+						<reference key="parent" ref="361934612"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">83</int>
+						<reference key="object" ref="948050430"/>
+						<reference key="parent" ref="361934612"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -687,13 +741,15 @@
 					<string>73.IBPluginDependency</string>
 					<string>75.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
+					<string>82.IBPluginDependency</string>
+					<string>83.IBPluginDependency</string>
 					<string>9.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{422, 707}, {193, 143}}</string>
+					<string>{{422, 677}, {193, 173}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -718,6 +774,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -736,7 +794,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">81</int>
+			<int key="maxID">87</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -749,11 +807,13 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>about:</string>
+							<string>checkNow:</string>
 							<string>goToSite:</string>
 							<string>openInSafari:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

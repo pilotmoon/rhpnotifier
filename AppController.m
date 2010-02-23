@@ -293,4 +293,9 @@
 	return (rhpChecker.status==RHPCHECKER_OK);
 }
 
+- (IBAction)checkNow:(id)sender
+{
+	NSLog(@"checknow");
+}
+
 @end
