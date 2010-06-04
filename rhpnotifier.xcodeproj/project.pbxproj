@@ -11,6 +11,7 @@
 		01250E2C112D547B00277879 /* Credits.md in Resources */ = {isa = PBXBuildFile; fileRef = 01250E2A112D547B00277879 /* Credits.md */; };
 		01250E2D112D547B00277879 /* License.md in Resources */ = {isa = PBXBuildFile; fileRef = 01250E2B112D547B00277879 /* License.md */; };
 		01250E30112D549A00277879 /* CreditsStub.html in Resources */ = {isa = PBXBuildFile; fileRef = 01250E2E112D549A00277879 /* CreditsStub.html */; };
+		0142625C11B986AE00CDC8EE /* PMLoginItemsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0142625B11B986AE00CDC8EE /* PMLoginItemsController.m */; };
 		015E1710111CE0C9006A9BFB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015E170F111CE0C9006A9BFB /* Sparkle.framework */; };
 		015E171C111CE0ED006A9BFB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 015E170F111CE0C9006A9BFB /* Sparkle.framework */; };
 		015E1727111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */; };
@@ -19,7 +20,6 @@
 		01A5C2FA110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F5110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m */; };
 		01A5C2FB110631B400651AB9 /* RhpChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F7110631B400651AB9 /* RhpChecker.m */; };
 		01A5C30B1106328200651AB9 /* App.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A5C3091106328200651AB9 /* App.xib */; };
-		01C8931C1133E08E00FE2280 /* LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C8931B1133E08E00FE2280 /* LoginItem.m */; };
 		01C894DF11342A1200FE2280 /* Permission.html in Resources */ = {isa = PBXBuildFile; fileRef = 01C894DE11342A1200FE2280 /* Permission.html */; };
 		01E7B424111ABE0900D5DACE /* Login.html in Resources */ = {isa = PBXBuildFile; fileRef = 01E7B422111ABE0900D5DACE /* Login.html */; };
 		01E7B55D111B545B00D5DACE /* PawnIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 01E7B55C111B545B00D5DACE /* PawnIcon.icns */; };
@@ -48,6 +48,8 @@
 		01250E2A112D547B00277879 /* Credits.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits.md; sourceTree = "<group>"; };
 		01250E2B112D547B00277879 /* License.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.md; sourceTree = "<group>"; };
 		01250E2F112D549A00277879 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = English; path = English.lproj/CreditsStub.html; sourceTree = "<group>"; };
+		0142625A11B986AE00CDC8EE /* PMLoginItemsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLoginItemsController.h; sourceTree = "<group>"; };
+		0142625B11B986AE00CDC8EE /* PMLoginItemsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLoginItemsController.m; sourceTree = "<group>"; };
 		015E170F111CE0C9006A9BFB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhpnotifier_dsa_pub.pem; sourceTree = "<group>"; };
 		017525AE1118301800F86785 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -59,8 +61,6 @@
 		01A5C2F7110631B400651AB9 /* RhpChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RhpChecker.m; sourceTree = "<group>"; };
 		01A5C30A1106328200651AB9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/App.xib; sourceTree = "<group>"; };
 		01B0C83D110F24DB002052CC /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
-		01C8931A1133E08E00FE2280 /* LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItem.h; sourceTree = "<group>"; };
-		01C8931B1133E08E00FE2280 /* LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItem.m; sourceTree = "<group>"; };
 		01C894DE11342A1200FE2280 /* Permission.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Permission.html; sourceTree = "<group>"; };
 		01E7B423111ABE0900D5DACE /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = English; path = English.lproj/Login.html; sourceTree = "<group>"; };
 		01E7B55C111B545B00D5DACE /* PawnIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = PawnIcon.icns; path = graphics/PawnIcon.icns; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				01C8931A1133E08E00FE2280 /* LoginItem.h */,
-				01C8931B1133E08E00FE2280 /* LoginItem.m */,
+				0142625A11B986AE00CDC8EE /* PMLoginItemsController.h */,
+				0142625B11B986AE00CDC8EE /* PMLoginItemsController.m */,
 				01A5C2F0110631B400651AB9 /* AppController.h */,
 				01A5C2F1110631B400651AB9 /* AppController.m */,
 				01A5C2F4110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.h */,
@@ -280,7 +280,7 @@
 				01A5C2F8110631B400651AB9 /* AppController.m in Sources */,
 				01A5C2FA110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m in Sources */,
 				01A5C2FB110631B400651AB9 /* RhpChecker.m in Sources */,
-				01C8931C1133E08E00FE2280 /* LoginItem.m in Sources */,
+				0142625C11B986AE00CDC8EE /* PMLoginItemsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

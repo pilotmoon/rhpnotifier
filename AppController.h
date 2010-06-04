@@ -54,7 +54,6 @@
 @property (readonly) BOOL pulldown;
 @property (readonly) BOOL statusOk;
 @property (readonly) BOOL cookieOk;
-@property BOOL startAtLogin;
 @property BOOL menuEnabled;
 @property (copy) NSString *statusLine;
 @property (copy) NSString *resultLine;

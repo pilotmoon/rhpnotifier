@@ -1,5 +1,4 @@
 #import "AppController.h"
-#import "LoginItem.h"
 
 #define INTERVAL_RECONNECT 10
 #define INTERVAL_MIN 60
@@ -367,23 +366,5 @@ static NSString * const  permissionKey = @"RHPCookiePermission";
 	return (rhpChecker.status!=RHPCHECKER_COOKIE_PROBLEM && 
 			rhpChecker.status!=RHPCHECKER_NO_PERMISSION);
 }
-
-- (NSURL *)appURL
-{
-	return [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-}
-
-- (BOOL)startAtLogin
-{
-	return [LoginItem willStartAtLogin:[self appURL]];
-}
-
-- (void)setStartAtLogin:(BOOL)enabled
-{
-	[self willChangeValueForKey:@"startAtLogin"];
-	[LoginItem setStartAtLogin:[self appURL] enabled:enabled];
-	[self didChangeValueForKey:@"startAtLogin"];
-}
-
 
 @end
