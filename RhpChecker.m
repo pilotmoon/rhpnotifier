@@ -21,9 +21,11 @@
 	
 	// site specific parameters
 	siteQueryUrl=[NSURL URLWithString:@"http://www.redhotpawn.com/xml/simple/gameswaitingcount_xml.php"];
+//	siteQueryUrl=[NSURL URLWithString:@"http://localhost/rhp.xml"];
 	siteVisitUrl=[NSURL URLWithString:@"http://www.redhotpawn.com/core/gameserve.php"];
 	siteLoginUrl=[NSURL URLWithString:@"http://www.redhotpawn.com/core/login.php"];
 	siteCookieNames=[NSSet setWithObjects:@"rhp_cookieid", @"rhp_uid", nil];
+//	siteCookieNames=[NSSet setWithObjects:nil];
 	
 	return self;
 }

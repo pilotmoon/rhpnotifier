@@ -5,7 +5,8 @@
 #define INTERVAL_MAX 1800
 #define INTERVAL_MULTIPLIER 1.2
 
-static NSString * const  permissionKey = @"RHPCookiePermission";
+static NSString * const permissionKey = @"RHPCookiePermission";
+static NSString * const RHPGrowlNotificationName = @"Games Waiting";
 
 @implementation AppController
 
@@ -69,6 +70,9 @@ NSString *RHPPrefsSoundOn = @"DingSoundOn";
 	// load up ding sound
 	dingSound = [NSSound soundNamed:@"Bell"];
 	previousGamesWaiting = 0;
+	
+	// set up growl
+	[GrowlApplicationBridge setGrowlDelegate:self];
 	
 	rhpChecker.permission=[[NSUserDefaults standardUserDefaults] boolForKey:permissionKey];
 	
@@ -150,6 +154,16 @@ NSString *RHPPrefsSoundOn = @"DingSoundOn";
 	}
 }
 
+- (NSString *)getResultString
+{
+	switch (rhpChecker.gamesWaiting) {
+		case 1:
+			return @"1 game waiting";
+		default:
+			return [NSString stringWithFormat:@"%d games waiting", rhpChecker.gamesWaiting];
+	}
+}
+
 - (void)updateIcon
 {
 	switch(rhpChecker.status) {
@@ -159,6 +173,13 @@ NSString *RHPPrefsSoundOn = @"DingSoundOn";
 			if(rhpChecker.gamesWaiting>previousGamesWaiting) {
 				if ([[NSUserDefaults standardUserDefaults] boolForKey:RHPPrefsSoundOn]) {
 					[dingSound play];
+					[GrowlApplicationBridge notifyWithTitle:@"RHP Notifier"
+												description:[self getResultString]
+										   notificationName:RHPGrowlNotificationName
+												   iconData:nil
+												   priority:0
+												   isSticky:NO
+											   clickContext:@""];
 				}
 			}
 			previousGamesWaiting = rhpChecker.gamesWaiting;
@@ -185,14 +206,7 @@ NSString *RHPPrefsSoundOn = @"DingSoundOn";
 {
 	switch(rhpChecker.status) {
 		case RHPCHECKER_OK:
-			switch (rhpChecker.gamesWaiting) {
-				case 1:
-					self.resultLine=@"1 game waiting";
-					break;
-				default:
-					self.resultLine=[NSString stringWithFormat:@"%d games waiting", rhpChecker.gamesWaiting];
-					break;
-			}
+			self.resultLine=[self getResultString];
 			break;
 	
 		case RHPCHECKER_COOKIE_PROBLEM:
@@ -395,6 +409,23 @@ NSString *RHPPrefsSoundOn = @"DingSoundOn";
 {
 	return (rhpChecker.status!=RHPCHECKER_COOKIE_PROBLEM && 
 			rhpChecker.status!=RHPCHECKER_NO_PERMISSION);
+}
+
+#pragma mark Growl stuff
+
+- (NSDictionary *) registrationDictionaryForGrowl
+{
+	return [NSDictionary dictionaryWithObjectsAndKeys:
+							   [NSArray arrayWithObject:RHPGrowlNotificationName], GROWL_NOTIFICATIONS_ALL,
+							   [NSArray arrayWithObject:RHPGrowlNotificationName], GROWL_NOTIFICATIONS_DEFAULT,
+							NULL];
+	
+}
+
+- (void) growlNotificationWasClicked:(id)clickContext;
+{
+	NSLog(@"notification was clicked");
+	[self goToSite:self];
 }
 
 @end

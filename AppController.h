@@ -1,7 +1,8 @@
 #import <AppKit/AppKit.h>
+#import <Growl/Growl.h>
 #import "RhpChecker.h"
 
-@interface AppController : NSObject <RhpCheckerDelegate> {
+@interface AppController : NSObject <RhpCheckerDelegate, GrowlApplicationBridgeDelegate> {
 	// YES if currently idle, NO if checking
 	BOOL ready;
 	
@@ -52,6 +53,7 @@
 	// ding sound
 	NSSound *dingSound;
 	
+	// keep track of changes to waiting game count
 	NSUInteger previousGamesWaiting;
 }
 
