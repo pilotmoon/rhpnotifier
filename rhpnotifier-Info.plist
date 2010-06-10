@@ -39,6 +39,6 @@
 	<key>SUScheduledCheckInterval</key>
 	<string>86400</string>
 	<key>SUEnableSystemProfiling</key>
-	<false/>
+	<true/>
 </dict>
 </plist>
