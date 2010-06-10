@@ -48,6 +48,11 @@
 	NSImage *statusImageBlack;
 	NSImage *statusImageRed;
 	NSImage *statusImageGrey;
+	
+	// ding sound
+	NSSound *dingSound;
+	
+	NSUInteger previousGamesWaiting;
 }
 
 @property BOOL ready;

@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="44"/>
 			<integer value="72"/>
+			<integer value="44"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -134,6 +134,24 @@
 									<reference key="NSOnImage" ref="508418370"/>
 									<reference key="NSMixedImage" ref="721119956"/>
 								</object>
+								<object class="NSMenuItem" id="345554930">
+									<reference key="NSMenu" ref="37420484"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="508418370"/>
+									<reference key="NSMixedImage" ref="721119956"/>
+								</object>
+								<object class="NSMenuItem" id="479951153">
+									<reference key="NSMenu" ref="37420484"/>
+									<string key="NSTitle">Enable Sounds</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="508418370"/>
+									<reference key="NSMixedImage" ref="721119956"/>
+								</object>
 								<object class="NSMenuItem" id="878363270">
 									<reference key="NSMenu" ref="37420484"/>
 									<bool key="NSIsDisabled">YES</bool>
@@ -182,6 +200,10 @@
 				</object>
 			</object>
 			<object class="NSUserDefaultsController" id="776431540">
+				<object class="NSMutableArray" key="NSDeclaredKeys">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>DingSoundOn</string>
+				</object>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 			<object class="NSWindowTemplate" id="394865093">
@@ -638,6 +660,22 @@
 					</object>
 					<int key="connectionID">130</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.DingSoundOn</string>
+						<reference key="source" ref="479951153"/>
+						<reference key="destination" ref="776431540"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="479951153"/>
+							<reference key="NSDestination" ref="776431540"/>
+							<string key="NSLabel">value: values.DingSoundOn</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.DingSoundOn</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">134</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -815,6 +853,8 @@
 							<reference ref="210648269"/>
 							<reference ref="878363270"/>
 							<reference ref="777839586"/>
+							<reference ref="479951153"/>
+							<reference ref="345554930"/>
 						</object>
 						<reference key="parent" ref="10866812"/>
 					</object>
@@ -853,6 +893,16 @@
 						<reference key="object" ref="698364243"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">131</int>
+						<reference key="object" ref="479951153"/>
+						<reference key="parent" ref="37420484"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">132</int>
+						<reference key="object" ref="345554930"/>
+						<reference key="parent" ref="37420484"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -862,6 +912,8 @@
 					<string>1.IBPluginDependency</string>
 					<string>10.IBPluginDependency</string>
 					<string>129.IBPluginDependency</string>
+					<string>131.IBPluginDependency</string>
+					<string>132.IBPluginDependency</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
@@ -897,6 +949,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{422, 677}, {193, 173}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -916,7 +970,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{615, 667}, {274, 73}}</string>
+					<string>{{615, 637}, {274, 103}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -944,7 +998,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">130</int>
+			<int key="maxID">134</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

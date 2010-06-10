@@ -12,6 +12,23 @@ static NSString * const  permissionKey = @"RHPCookiePermission";
 @synthesize ready, menuEnabled;
 @synthesize statusLine, resultLine, loginLine, loginWindowText;
 
+NSString *RHPPrefsSoundOn = @"DingSoundOn";
+
++ (void)initialize
+{
+	if (self == [AppController class]) // standard check to prevent multiple runs
+    {
+		NSLog(@"registering standard defaults");
+		
+        // Register defaults
+        NSDictionary * defaults = [NSDictionary dictionaryWithObjectsAndKeys:
+								   [NSNumber numberWithBool:NO], RHPPrefsSoundOn,
+									NULL];
+        
+        [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    }
+}
+
 - (BOOL)pulldown
 {
 	return NO;
@@ -49,6 +66,10 @@ static NSString * const  permissionKey = @"RHPCookiePermission";
 	[statusImageRed setSize:size];
 	[statusImageGrey setSize:size];
 	
+	// load up ding sound
+	dingSound = [NSSound soundNamed:@"Bell"];
+	previousGamesWaiting = 0;
+	
 	rhpChecker.permission=[[NSUserDefaults standardUserDefaults] boolForKey:permissionKey];
 	
 	return self;
@@ -62,7 +83,7 @@ static NSString * const  permissionKey = @"RHPCookiePermission";
 	[statusItem setHighlightMode:YES];	
 	[statusItem setMenu:statusMenu];
 	[statusMenu setDelegate:self];
-	
+
 	[self updateIcon];
 	
 	// schedule the very first check
@@ -133,6 +154,15 @@ static NSString * const  permissionKey = @"RHPCookiePermission";
 {
 	switch(rhpChecker.status) {
 		case RHPCHECKER_OK:
+			
+			// Handle notifications.
+			if(rhpChecker.gamesWaiting>previousGamesWaiting) {
+				if ([[NSUserDefaults standardUserDefaults] boolForKey:RHPPrefsSoundOn]) {
+					[dingSound play];
+				}
+			}
+			previousGamesWaiting = rhpChecker.gamesWaiting;
+			
 			switch (rhpChecker.gamesWaiting) {
 				case 0:
 					[statusItem setTitle:nil];	

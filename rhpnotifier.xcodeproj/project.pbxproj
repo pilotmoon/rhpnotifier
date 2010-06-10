@@ -16,6 +16,7 @@
 		015E171C111CE0ED006A9BFB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 015E170F111CE0C9006A9BFB /* Sparkle.framework */; };
 		015E1727111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */; };
 		017525AF1118301800F86785 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017525AE1118301800F86785 /* AppKit.framework */; };
+		01831EC711C0EA98007EFBAE /* Bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 01831EC611C0EA98007EFBAE /* Bell.aiff */; };
 		01A5C2F8110631B400651AB9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F1110631B400651AB9 /* AppController.m */; };
 		01A5C2FA110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F5110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m */; };
 		01A5C2FB110631B400651AB9 /* RhpChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F7110631B400651AB9 /* RhpChecker.m */; };
@@ -53,6 +54,7 @@
 		015E170F111CE0C9006A9BFB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhpnotifier_dsa_pub.pem; sourceTree = "<group>"; };
 		017525AE1118301800F86785 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		01831EC611C0EA98007EFBAE /* Bell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Bell.aiff; sourceTree = "<group>"; };
 		01A5C2F0110631B400651AB9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		01A5C2F1110631B400651AB9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		01A5C2F4110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPCookieStorage+FilterNames.h"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				01831EC611C0EA98007EFBAE /* Bell.aiff */,
 				01250E23112D533F00277879 /* Credits.html */,
 				015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */,
 				01E7B55E111B547100D5DACE /* PawnStatusBlack.png */,
@@ -246,6 +249,7 @@
 				01250E2D112D547B00277879 /* License.md in Resources */,
 				01250E30112D549A00277879 /* CreditsStub.html in Resources */,
 				01C894DF11342A1200FE2280 /* Permission.html in Resources */,
+				01831EC711C0EA98007EFBAE /* Bell.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
