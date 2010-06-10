@@ -18,7 +18,7 @@
 		017525AF1118301800F86785 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017525AE1118301800F86785 /* AppKit.framework */; };
 		01831F1911C0FC35007EFBAE /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01831F1811C0FC35007EFBAE /* Growl.framework */; };
 		01831F1C11C0FC9B007EFBAE /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01831F1811C0FC35007EFBAE /* Growl.framework */; };
-		0183213011C11619007EFBAE /* 353390_DeskBell01.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0183212F11C11619007EFBAE /* 353390_DeskBell01.aiff */; };
+		0183216B11C1244C007EFBAE /* 353390_DeskBell01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0183216A11C1244C007EFBAE /* 353390_DeskBell01.mp3 */; };
 		01A5C2F8110631B400651AB9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F1110631B400651AB9 /* AppController.m */; };
 		01A5C2FA110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F5110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.m */; };
 		01A5C2FB110631B400651AB9 /* RhpChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A5C2F7110631B400651AB9 /* RhpChecker.m */; };
@@ -58,7 +58,7 @@
 		015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhpnotifier_dsa_pub.pem; sourceTree = "<group>"; };
 		017525AE1118301800F86785 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		01831F1811C0FC35007EFBAE /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = "Growl-1.2.1-Framework/Growl.framework"; sourceTree = "<group>"; };
-		0183212F11C11619007EFBAE /* 353390_DeskBell01.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 353390_DeskBell01.aiff; sourceTree = "<group>"; };
+		0183216A11C1244C007EFBAE /* 353390_DeskBell01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 353390_DeskBell01.mp3; sourceTree = "<group>"; };
 		01A5C2F0110631B400651AB9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		01A5C2F1110631B400651AB9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		01A5C2F4110631B400651AB9 /* NSHTTPCookieStorage+FilterNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPCookieStorage+FilterNames.h"; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0183212F11C11619007EFBAE /* 353390_DeskBell01.aiff */,
+				0183216A11C1244C007EFBAE /* 353390_DeskBell01.mp3 */,
 				01250E23112D533F00277879 /* Credits.html */,
 				015E1726111CE25F006A9BFB /* rhpnotifier_dsa_pub.pem */,
 				01E7B55E111B547100D5DACE /* PawnStatusBlack.png */,
@@ -255,7 +255,7 @@
 				01250E2D112D547B00277879 /* License.md in Resources */,
 				01250E30112D549A00277879 /* CreditsStub.html in Resources */,
 				01C894DF11342A1200FE2280 /* Permission.html in Resources */,
-				0183213011C11619007EFBAE /* 353390_DeskBell01.aiff in Resources */,
+				0183216B11C1244C007EFBAE /* 353390_DeskBell01.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
