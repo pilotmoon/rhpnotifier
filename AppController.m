@@ -68,7 +68,7 @@ NSString *RHPPrefsSoundOn = @"DingSoundOn";
 	[statusImageGrey setSize:size];
 	
 	// load up ding sound
-	dingSound = [NSSound soundNamed:@"Bell"];
+	dingSound = [NSSound soundNamed:@"353390_DeskBell01"];
 	previousGamesWaiting = 0;
 	
 	// set up growl

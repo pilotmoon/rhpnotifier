@@ -26,4 +26,5 @@ After the first check, RHP Notifier will wait 1 minute before checking again. Ov
 
 ### Settings
 
-The settings menu allows you to set RHP Notifier to run automatically when you log onto your computer. You can also ask it to check automatically to see if new versions of the software are available.
+The settings menu allows you to set RHP Notifier to run automatically when you log onto your computer. You can also ask it to check automatically to see if new versions of the software are available. Turn on *Enable Sounds* to have an audio alert when there is a new game. If you have [Growl](http://growl.info/) installed then you will see notifications of the number of new games. To change this behaviour, go to the Growl preference pane.
+
