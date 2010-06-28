@@ -425,6 +425,7 @@ NSString *RHPPrefsSoundOn = @"DingSoundOn";
 - (void) growlNotificationWasClicked:(id)clickContext;
 {
 	NSLog(@"notification was clicked");
+	[self checkSoon];
 	[self goToSite:self];
 }
 
